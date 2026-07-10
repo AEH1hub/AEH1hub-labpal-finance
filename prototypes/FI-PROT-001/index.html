@@ -8,7 +8,7 @@
 body{margin:0;background:#0b0d10;color:#f4f6f8;font:15px/1.5 system-ui,-apple-system,sans-serif}
 .s{max-width:920px;margin:auto;padding:24px}
 .c{background:#14181d;border:1px solid #2a3038;border-radius:18px;padding:22px;margin:16px 0}
-h1{font-size:26px;margin:0 0 8px}h2{font-size:18px;margin:0 0 8px}
+h1{font-size:26px;margin:0 0 8px}h2{font-size:18px;margin:0 0 8px}h3{font-size:15px;margin:0 0 8px;color:#e8ecf0}
 p,small,li{color:#9aa5b1}
 label{display:block;margin:14px 0 6px;color:#9aa5b1;font-size:13px}
 input,textarea,select{width:100%;box-sizing:border-box;background:#0f1216;color:#fff;border:1px solid #2a3038;border-radius:12px;padding:13px;font:inherit}
@@ -23,7 +23,6 @@ button:disabled{opacity:.45;cursor:not-allowed}
 .good{color:#70d69c;border-color:#2d5a42}.warn{color:#f0c36a;border-color:#5a4a22}.muted{color:#9aa5b1}.bad{color:#e8a0a0;border-color:#5a3030}
 .ev{border-left:3px solid #3d7eff;padding-left:12px;margin:14px 0}
 .notice{color:#f0c36a;border:1px dashed #f0c36a;padding:12px;border-radius:12px;margin:12px 0}
-.notice.bad{border-color:#a05050;color:#e8a0a0}
 .intro{border-color:#2d4a6a;background:#101820}
 .statusbar{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
 .hdr{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
@@ -38,12 +37,21 @@ button:disabled{opacity:.45;cursor:not-allowed}
 .ctx{border:1px dashed #2a3038;border-radius:12px;padding:14px;margin-top:12px}
 .preserved{background:#101820;border-color:#2d4a6a}
 ul{margin:8px 0;padding-left:20px}
+.plan{margin-top:20px}
+.plan-lead{color:#c8d0d8;font-size:16px;margin:12px 0 16px}
+.plan-card{background:#0f1216;border:1px solid #2a3038;border-radius:14px;padding:18px;margin:12px 0}
+.plan-card.guide{border-color:#2d4a6a}
+.plan-card.muted-card{border-color:#2a3038;opacity:.95}
+.plan-card.boundary{border-color:#4a3a2a;background:#12100e}
+.plan-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.plan-actions button{margin-top:0}
+.badge-row{margin:12px 0}
 </style>
 </head>
 <body>
 <div class="s">
   <div class="hdr">
-    <div><b>LabPal Finance</b> · FI-PROT-001-RC1</div>
+    <div><b>LabPal Finance</b> · FI-PROT-001-RC2</div>
     <div><small>Capture timer</small> <span id="t">—</span></div>
   </div>
 
@@ -51,10 +59,9 @@ ul{margin:8px 0;padding-left:20px}
     <p>LabPal Finance helps you preserve market thoughts before hindsight changes the story. It is a research, decision-journaling, evidence-preservation, and self-audit tool — not a signal engine or broker.</p>
     <div class="statusbar">
       <span class="chip warn">Quick Capture: BUILT — RETEST REQUIRED</span>
-      <span class="chip muted">Ask LabPal: PROTOTYPE SURFACE — NO LIVE EVIDENCE SOURCE</span>
+      <span class="chip muted">Ask LabPal: STRUCTURED RESEARCH PLAN — NO LIVE EVIDENCE SOURCE</span>
       <span class="chip muted">Investigate: BUILT — BEHAVIORALLY UNTESTED</span>
       <span class="chip muted">Profit Evidence Panel: ILLUSTRATIVE ONLY</span>
-      <span class="chip muted">Entry zones / signals / broker: NOT IN THIS MVP</span>
     </div>
   </section>
 
@@ -64,23 +71,22 @@ ul{margin:8px 0;padding-left:20px}
     <button type="button" class="tab" id="tabInv" onclick="showMode('investigate')" disabled>Investigate</button>
   </nav>
 
-  <!-- ASK LABPAL -->
   <section id="modeAsk" class="c">
     <h1>Ask LabPal</h1>
-    <p>Research questions only. LabPal will not fabricate current market answers or recommend trades.</p>
+    <p>Ask a research question. LabPal will build an <b>Understanding Plan</b> — how to investigate it — without fabricating live answers.</p>
     <label>Your research question</label>
     <textarea id="askQ" placeholder="e.g. What evidence would I need to evaluate SCHD?"></textarea>
-    <p><small>Example questions — tap to try in Ask LabPal (not Quick Capture):</small></p>
+    <p><small>Try an example — these open in Ask LabPal, not Quick Capture:</small></p>
     <div class="examples">
-      <button type="button" class="ghost" onclick="fillAsk('How is the market today?')">How is the market today?</button>
-      <button type="button" class="ghost" onclick="fillAsk('Which companies are worth researching for the next 6 months?')">Worth researching (6 months)?</button>
+      <button type="button" class="ghost" onclick="fillAsk('How is the market today?')">Market today?</button>
+      <button type="button" class="ghost" onclick="fillAsk('Which companies are worth researching for the next 6 months?')">Research for 6 months?</button>
       <button type="button" class="ghost" onclick="fillAsk('What evidence would I need to evaluate SCHD?')">Evidence for SCHD?</button>
+      <button type="button" class="ghost" onclick="fillAsk('What is happening with silver?')">What about silver?</button>
     </div>
-    <button type="button" class="primary" onclick="runAsk()">Classify question</button>
+    <button type="button" class="primary" onclick="runAsk()">Build understanding plan</button>
     <div id="askOut" class="hide"></div>
   </section>
 
-  <!-- QUICK CAPTURE -->
   <section id="modeCapture" class="c hide">
     <h1>Quick Capture</h1>
     <p>For a thought you <b>already have</b>. Do not clean the wording. Target: under 60 seconds.</p>
@@ -107,7 +113,6 @@ ul{margin:8px 0;padding-left:20px}
     <button type="button" class="primary" onclick="save()">Preserve thought</button>
   </section>
 
-  <!-- POST-CAPTURE -->
   <section id="postCap" class="c preserved hide">
     <h2>Thought preserved</h2>
     <div id="preserved"></div>
@@ -115,11 +120,13 @@ ul{margin:8px 0;padding-left:20px}
     <button type="button" class="primary" onclick="openInvestigate()">Investigate this thought</button>
   </section>
 
-  <!-- INVESTIGATE -->
   <section id="modeInvestigate" class="c hide">
     <h1>Investigate</h1>
-    <p>Organize what you captured. Optional — only after preservation.</p>
+    <p>Organize what you captured or your research question. Investigation adds structure — it does not rewrite history.</p>
+    <div id="invFromAsk" class="plan-card guide hide"></div>
     <div id="invPreserved" class="ev"></div>
+    <label>Research question / preserved thought</label>
+    <textarea id="invQuestion" readonly></textarea>
     <label>Facts</label>
     <textarea id="invFacts" placeholder="Direct observations only"></textarea>
     <label>Interpretations</label>
@@ -149,11 +156,11 @@ ul{margin:8px 0;padding-left:20px}
     <button type="button" class="primary" onclick="finishInvestigate()">Save investigation</button>
   </section>
 
-  <!-- RESULTS -->
   <section id="results" class="c hide">
     <h2>Current Understanding</h2>
     <div class="notice">Selection does not equal verification.</div>
     <div id="sum"></div>
+    <div id="invBoundary" class="plan-card boundary hide"></div>
     <h2>Profit Evidence Panel</h2>
     <p><b>Profit evidence is not a recommendation.</b></p>
     <span class="chip muted">NO OUTCOME EVIDENCE YET</span>
@@ -165,10 +172,157 @@ ul{margin:8px 0;padding-left:20px}
   </section>
 </div>
 <script>
-let cap = null, timerStart = null, timerId = null;
+let cap = null, timerStart = null, timerId = null, lastPlan = null;
+
+const UNKNOWN_NOW = [
+  'Current live data unavailable',
+  'Source freshness unknown',
+  'No suitability review performed',
+  'No risk boundary defined',
+  'No execution validity check'
+];
+
+const CAN_DO = 'LabPal can help structure the research question, identify needed evidence, separate facts from interpretations, and preserve unknowns.';
+const CANNOT_DO = 'Live evidence sources are not connected yet, so LabPal cannot truthfully answer today’s market conditions, rank stocks, or generate entry zones.';
+const ACTION_BOUNDARY = 'Research candidate ≠ recommendation. Entry zone ≠ validated action. LabPal requires sourced evidence, risk boundary, and review before action language.';
 
 function e(v) {
   return String(v || 'UNKNOWN').replace(/[&<>"]/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[x]));
+}
+
+function extractTicker(q) {
+  return (q.match(/\b[A-Z]{2,5}\b/) || [])[0] || '';
+}
+
+function analyzeQuestion(q) {
+  const l = q.toLowerCase();
+  const ticker = extractTicker(q);
+  if (/\b(entry zone|when to enter|when to buy|best time to|timing signal|buy zone|sell zone)\b/.test(l)) {
+    return { type: 'Entry-zone / timing question — future gated', category: 'timing', ticker, gated: true };
+  }
+  if (/\b(buy now|sell now|what to buy|rank stocks|execute this trade|guaranteed|promise monthly profit|tell me exactly what)\b/.test(l)) {
+    return { type: 'Action request — not supported in MVP', category: 'blocked', ticker, blocked: true };
+  }
+  if (/\b(how is the market|market today|what is happening with|happening with silver|happening with gold)\b/.test(l) || /\b(silver|gold|oil|commodit)\b/.test(l) && /\b(happening|today|now|going on)\b/.test(l)) {
+    return { type: 'Market overview question', category: 'market', ticker: ticker || (/\bsilver\b/.test(l) ? 'SILVER' : /\bgold\b/.test(l) ? 'GOLD' : '') };
+  }
+  if (/\b(worth researching|companies to research|stocks worth|research for|researching for)\b/.test(l)) {
+    return { type: 'Candidate discovery question', category: 'discovery', ticker };
+  }
+  if (/\b(schd\b|etf\b|fund\b)/.test(l) || (ticker && /\b(evidence|evaluate|assess|due diligence)\b/.test(l))) {
+    return { type: 'Company / ETF research question', category: 'etf', ticker: ticker || 'SCHD' };
+  }
+  if (/\b(evidence|evaluate|thesis|invalid|what would make)\b/.test(l)) {
+    return { type: 'Thesis evaluation question', category: 'thesis', ticker };
+  }
+  return { type: 'General research question', category: 'general', ticker };
+}
+
+function evidenceFor(category, q, ticker) {
+  const t = ticker || extractTicker(q) || 'the instrument';
+  switch (category) {
+    case 'etf':
+      return [
+        `Fund factsheet for ${t}`,
+        'Holdings exposure and concentration',
+        'Distribution history and sustainability',
+        'Expense ratio and total cost of ownership',
+        'Yield mechanics (qualified vs ordinary, ROC, NAV erosion)',
+        'Risk / drawdown history across regimes',
+        'Comparison against your stated income objective',
+        'Tax and currency impact for your context',
+        'Time horizon aligned to the question'
+      ];
+    case 'market':
+      return [
+        'Index performance with timestamped source links',
+        'Rates and yields context',
+        'Sector breadth and leadership',
+        'Major news catalysts (dated, sourced)',
+        'Volatility / risk sentiment indicators',
+        ticker === 'SILVER' || /\bsilver\b/i.test(q) ? 'Silver: spot vs futures basis, USD linkage, industrial demand data' : null,
+        'Connected live feed (NOT AVAILABLE in prototype)'
+      ].filter(Boolean);
+    case 'discovery':
+      return [
+        'Sector or theme filter tied to your objective',
+        'Earnings growth evidence (sourced filings, not headlines)',
+        'Valuation context vs history and peers',
+        'Balance sheet risk and leverage',
+        'Catalyst calendar for the 6-month horizon',
+        'Downside scenario you would accept',
+        'Reason each name is a research candidate only — not a recommendation'
+      ];
+    case 'timing':
+      return [
+        'Defined risk boundary before any timing language',
+        'Sourced price/volatility context (not available live here)',
+        'Invalidation level tied to thesis, not emotion',
+        'Cost of being wrong (time, capital, opportunity)',
+        'Review trigger — what would reopen the question',
+        'Entry-zone generation is future gated and not shown in this MVP'
+      ];
+    case 'thesis':
+      return [
+        `Primary documentation for ${t || 'the subject'}`,
+        'Facts vs interpretations explicitly separated',
+        'Falsification criteria — what would change the thesis',
+        'Evidence gaps before the thesis is testable',
+        'Comparator or benchmark for the claim'
+      ];
+    case 'blocked':
+      return [
+        'Reframe as a research or evidence question',
+        'State objective and horizon without action language',
+        'List unknowns before any decision framing',
+        'Preserve the question — do not seek a live pick list'
+      ];
+    default:
+      return [
+        'Primary source documents',
+        'Cost and tax assumptions',
+        'Time horizon',
+        'Explicit unknowns',
+        'Invalidation criteria'
+      ];
+  }
+}
+
+function buildPlan(q) {
+  const meta = analyzeQuestion(q);
+  const evidence = evidenceFor(meta.category, q, meta.ticker);
+  const horizon = /\b6\s*months?|six\s*months?\b/i.test(q) ? '6 months' : /\b1\s*year|one\s*year\b/i.test(q) ? '1 year' : 'Now / intraday';
+  return { question: q, ...meta, evidence, unknowns: UNKNOWN_NOW, horizon, boundary: ACTION_BOUNDARY };
+}
+
+function card(title, body, cls = '') {
+  return `<div class="plan-card ${cls}"><h3>${title}</h3>${body}</div>`;
+}
+
+function renderPlan(plan) {
+  const gatedNote = plan.gated ? '<p><span class="chip warn">Future gated — timing / entry-zone support not in this MVP</span></p>' : '';
+  const blockedNote = plan.blocked ? '<p><span class="chip bad">Action language detected — LabPal will not recommend trades</span></p>' : '';
+  return `
+    <div class="plan">
+      <p class="plan-lead">Here’s how to investigate: <em>${e(plan.question)}</em></p>
+      <div class="badge-row">
+        <span class="chip muted">CURRENT EVIDENCE SOURCE NOT CONNECTED</span>
+        <span class="chip warn">AI SUGGESTION: UNREVIEWED</span>
+      </div>
+      ${card('Question type', `<p>${e(plan.type)}</p>${gatedNote}${blockedNote}`, 'guide')}
+      ${card('What LabPal can do now', `<p>${CAN_DO}</p>`, 'guide')}
+      ${card('What LabPal cannot do yet', `<p>${CANNOT_DO}</p>`, 'muted-card')}
+      ${card('Evidence needed', `<ul>${plan.evidence.map(x => `<li>${e(x)}</li>`).join('')}</ul>`, 'guide')}
+      ${card('Unknown right now', `<ul>${plan.unknowns.map(x => `<li>${e(x)}</li>`).join('')}</ul>`, 'muted-card')}
+      ${card('Safe next action', `
+        <p>Move this question into your workflow — no live recommendations are generated.</p>
+        <div class="plan-actions">
+          <button type="button" class="primary" onclick="preserveQuestion()">Preserve this research question</button>
+          <button type="button" class="ghost" onclick="convertToCapture()">Convert to Quick Capture</button>
+          <button type="button" class="ghost" onclick="startInvestigateTemplate()">Start Investigate template</button>
+        </div>`, 'guide')}
+      ${card('Action boundary', `<p>${ACTION_BOUNDARY}</p>`, 'boundary')}
+    </div>`;
 }
 
 function showMode(mode) {
@@ -185,58 +339,65 @@ function fillAsk(text) {
   showMode('ask');
 }
 
-function blockedQuestion(q) {
-  const l = q.toLowerCase();
-  return /\b(buy now|sell now|what to buy|entry zone|guaranteed|rank stocks|execute this trade|promise monthly profit|tell me exactly what)\b/.test(l);
-}
-
-function classifyAsk(q) {
-  const l = q.toLowerCase();
-  if (/\b(how is the market|market today)\b/.test(l)) return 'Market overview / current conditions';
-  if (/\b(worth researching|companies to research|screen)\b/.test(l)) return 'Research screening / candidate discovery';
-  if (/\b(evidence|evaluate|assess|due diligence)\b/.test(l)) return 'Evidence requirements / evaluation framework';
-  if (/\b(invalid|wrong|change my mind|thesis)\b/.test(l)) return 'Invalidation / thesis review';
-  if (/\b(unknown|still don.t know)\b/.test(l)) return 'Unknown surfacing';
-  return 'General research question';
-}
-
-function evidenceNeeded(kind, q) {
-  const base = [
-    'Primary source documents (filings, fund factsheets, issuer disclosures)',
-    'Cost assumptions including fees, spreads, and taxes',
-    'Time horizon aligned to the question',
-    'Explicit unknowns — what you do not have yet'
-  ];
-  if (kind.includes('Market overview')) {
-    return [...base, 'Connected market data feed (NOT AVAILABLE)', 'Macro context with dated sources'];
-  }
-  if (kind.includes('screening')) {
-    return [...base, 'Screening criteria tied to your objective (not a stock pick list)', 'Comparator set with stated inclusion/exclusion rules'];
-  }
-  if (kind.includes('Evidence requirements')) {
-    const ticker = (q.match(/\b[A-Z]{2,5}\b/) || [])[0];
-    return [...base, ticker ? `Issuer/fund documentation for ${ticker}` : 'Named instrument documentation', 'Distribution/yield mechanics if income is relevant', 'Downside scenario you would accept'];
-  }
-  return base;
-}
-
 function runAsk() {
   const q = askQ.value.trim();
-  if (!q) { askOut.className = 'notice'; askOut.textContent = 'Enter a research question first.'; askOut.classList.remove('hide'); return; }
-  if (blockedQuestion(q)) {
-    askOut.innerHTML = `<div class="notice bad"><b>Not supported in this MVP</b><br>LabPal does not provide buy/sell recommendations, entry zones, stock rankings, broker execution, or profit promises.<br><small>Try: evidence requirements, unknowns, or invalidation framing.</small></div>`;
+  if (!q) {
+    askOut.innerHTML = card('Enter a question', '<p>Type a research question above to build your understanding plan.</p>', 'muted-card');
     askOut.classList.remove('hide');
     return;
   }
-  const kind = classifyAsk(q);
-  const ev = evidenceNeeded(kind, q);
-  askOut.innerHTML = `
-    <div class="notice bad"><b>CURRENT EVIDENCE SOURCE NOT CONNECTED</b><br>LabPal cannot answer with live market data. No fabricated answer is shown.</div>
-    <div class="ev"><b>Question classification</b><br>${e(kind)}</div>
-    <div class="ev"><b>What evidence would be needed</b><ul>${ev.map(x => `<li>${e(x)}</li>`).join('')}</ul></div>
-    <div class="ev"><b>What LabPal will not do here</b><br>No stock recommendations · No entry zones · No rankings · No trade execution</div>
-    <p><span class="chip warn">AI SUGGESTION: UNREVIEWED</span> <span class="chip">Human acceptance ≠ verification</span></p>`;
+  lastPlan = buildPlan(q);
+  localStorage.setItem('lpAsk', JSON.stringify(lastPlan));
+  askOut.innerHTML = renderPlan(lastPlan);
   askOut.classList.remove('hide');
+  askOut.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function preserveQuestion() {
+  if (!lastPlan) return;
+  localStorage.setItem('lpAskPreserved', JSON.stringify({ ...lastPlan, preservedAt: new Date().toISOString() }));
+  alert('Research question preserved in this browser session. You can convert it to capture or investigate next.');
+}
+
+function convertToCapture() {
+  if (!lastPlan) return;
+  const subj = lastPlan.ticker || (lastPlan.category === 'discovery' ? 'Research candidates' : lastPlan.category === 'market' ? (/\bsilver\b/i.test(lastPlan.question) ? 'Silver' : 'Market overview') : 'Research question');
+  i.value = subj;
+  q.value = lastPlan.question;
+  if (lastPlan.horizon === '6 months') { ctx.classList.remove('hide'); hz.value = '6 months'; }
+  if (lastPlan.horizon === '1 year') { ctx.classList.remove('hide'); hz.value = '1 year'; }
+  u.value = lastPlan.unknowns.join('; ');
+  showMode('capture');
+}
+
+function startInvestigateTemplate() {
+  if (!lastPlan) return;
+  const subj = lastPlan.ticker || (/\bsilver\b/i.test(lastPlan.question) ? 'Silver' : 'Research question');
+  cap = {
+    instrument: subj,
+    thought: lastPlan.question,
+    fragment: '',
+    unknowns: lastPlan.unknowns.join('\n'),
+    horizon: lastPlan.horizon || 'Now / intraday',
+    fromAsk: true,
+    timestamp: new Date().toISOString(),
+    seconds: 0
+  };
+  localStorage.setItem('lp', JSON.stringify(cap));
+  tabInv.disabled = false;
+  invFromAsk.innerHTML = `<h3>Investigate template from Ask LabPal</h3><p>${e(lastPlan.type)}</p><p><small>${ACTION_BOUNDARY}</small></p>`;
+  invFromAsk.classList.remove('hide');
+  invPreserved.innerHTML = '';
+  invQuestion.value = lastPlan.question;
+  invFacts.value = '';
+  invInterp.value = '';
+  invUnk.value = lastPlan.unknowns.join('\n');
+  invEv.value = lastPlan.evidence.join('\n');
+  invInv.value = lastPlan.gated ? 'Any timing claim without sourced evidence and risk boundary.' : '';
+  invCon.value = '';
+  invHz.value = lastPlan.horizon === '6 months' ? '6 months' : lastPlan.horizon === '1 year' ? '1 year' : 'Now / intraday';
+  showMode('investigate');
+  postCap.classList.add('hide');
 }
 
 function startTimer() {
@@ -258,8 +419,7 @@ function toggleCtx() {
 function horizonMismatch(text, horizon) {
   const l = text.toLowerCase();
   const long = /\b(6\s*months?|six\s*months?|1\s*year|one\s*year|12\s*months?|annual)\b/.test(l);
-  const now = horizon === 'Now / intraday';
-  return long && now;
+  return long && horizon === 'Now / intraday';
 }
 
 function mismatchNotice(text, horizon) {
@@ -286,6 +446,7 @@ function save() {
   preserved.innerHTML = `<b>${e(cap.instrument)}</b><br>${e(cap.thought)}<br><small>${cap.seconds}s · ${e(cap.timestamp)}</small>`;
   postCap.classList.remove('hide');
   tabInv.disabled = false;
+  invFromAsk.classList.add('hide');
   showMode('capture');
   modeCapture.classList.add('hide');
 }
@@ -293,11 +454,13 @@ function save() {
 function openInvestigate() {
   if (!cap) cap = JSON.parse(localStorage.getItem('lp') || 'null');
   if (!cap) return;
+  invFromAsk.classList.add('hide');
+  invQuestion.value = cap.thought;
   invPreserved.innerHTML = `<b>Preserved thought</b> (original wording locked)<br>${e(cap.thought)}<br><small>${e(cap.instrument)} · ${e(cap.timestamp)}</small>`;
   invUnk.value = cap.unknowns || '';
   invHz.value = cap.horizon || 'Now / intraday';
   invFacts.value = cap.fragment || '';
-  invInterp.value = cap.thought || '';
+  invInterp.value = '';
   showMode('investigate');
   postCap.classList.add('hide');
 }
@@ -315,7 +478,7 @@ function finishInvestigate() {
   };
   localStorage.setItem('lp', JSON.stringify(cap));
   sum.innerHTML = `
-    <div class="ev"><b>Preserved thought</b><br>${e(cap.thought)}<br><small>${e(cap.instrument)} · ${cap.seconds}s capture · original wording preserved</small></div>
+    <div class="ev"><b>Preserved thought</b><br>${e(cap.thought)}<br><small>${e(cap.instrument)} · ${cap.seconds || 0}s capture · original wording preserved</small></div>
     <div class="ev"><b>What is fact</b><br>${e(invFacts.value) || 'UNKNOWN'}</div>
     <div class="ev"><b>What is interpretation</b><br>${e(invInterp.value) || 'UNKNOWN'}</div>
     <div class="ev"><b>What is unknown</b><br>${e(invUnk.value) || 'UNKNOWN'}</div>
@@ -323,6 +486,8 @@ function finishInvestigate() {
     <div class="ev"><b>What would change the thesis</b><br>${e(invInv.value) || 'UNKNOWN'}</div>
     <div class="ev"><b>Contradictions / challenges</b><br>${e(invCon.value) || 'UNKNOWN — none preserved yet; absence is not proof of agreement.'}</div>
     <div class="ev"><b>Research horizon</b><br>${e(horizon)} · <b>Continuity</b>: ${e(invCt.value)}</div>`;
+  invBoundary.innerHTML = `<h3>Action boundary</h3><p>${ACTION_BOUNDARY}</p>`;
+  invBoundary.classList.remove('hide');
   results.classList.remove('hide');
   results.scrollIntoView({ behavior: 'smooth' });
 }
