@@ -8,165 +8,323 @@
 body{margin:0;background:#0b0d10;color:#f4f6f8;font:15px/1.5 system-ui,-apple-system,sans-serif}
 .s{max-width:920px;margin:auto;padding:24px}
 .c{background:#14181d;border:1px solid #2a3038;border-radius:18px;padding:22px;margin:16px 0}
-h1{font-size:28px;margin:0 0 8px}h2{font-size:20px;margin:0 0 8px}
+h1{font-size:26px;margin:0 0 8px}h2{font-size:18px;margin:0 0 8px}
 p,small,li{color:#9aa5b1}
 label{display:block;margin:14px 0 6px;color:#9aa5b1;font-size:13px}
 input,textarea,select{width:100%;box-sizing:border-box;background:#0f1216;color:#fff;border:1px solid #2a3038;border-radius:12px;padding:13px;font:inherit}
-textarea{min-height:90px;resize:vertical}
-button{padding:12px 16px;border:0;border-radius:12px;font-weight:700;margin-top:14px;cursor:pointer;background:#3d7eff;color:#fff}
-button:hover{background:#5a94ff}
+textarea{min-height:88px;resize:vertical}
+button,.tab{padding:11px 16px;border:0;border-radius:12px;font-weight:700;margin-top:14px;cursor:pointer;font:inherit}
+button.primary{background:#3d7eff;color:#fff}button.primary:hover{background:#5a94ff}
+button.ghost{background:transparent;border:1px solid #2a3038;color:#c8d0d8}
+button.ghost:hover{border-color:#3d7eff;color:#fff}
+button:disabled{opacity:.45;cursor:not-allowed}
 .hide{display:none}
 .chip{display:inline-block;border:1px solid #2a3038;border-radius:999px;padding:6px 10px;margin:4px 4px 4px 0;font-size:12px}
-.good{color:#70d69c;border-color:#2d5a42}.warn{color:#f0c36a;border-color:#5a4a22}.muted{color:#9aa5b1}
+.good{color:#70d69c;border-color:#2d5a42}.warn{color:#f0c36a;border-color:#5a4a22}.muted{color:#9aa5b1}.bad{color:#e8a0a0;border-color:#5a3030}
 .ev{border-left:3px solid #3d7eff;padding-left:12px;margin:14px 0}
 .notice{color:#f0c36a;border:1px dashed #f0c36a;padding:12px;border-radius:12px;margin:12px 0}
+.notice.bad{border-color:#a05050;color:#e8a0a0}
 .intro{border-color:#2d4a6a;background:#101820}
-.help details{margin:10px 0}
-.help summary{cursor:pointer;color:#c8d0d8;font-weight:600}
-.help ul{margin:8px 0;padding-left:20px}
-.help .blocked li{color:#c9a0a0}
 .statusbar{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
 .hdr{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
-#t{font-variant-numeric:tabular-nums;font-weight:700}
+#t{font-variant-numeric:tabular-nums;font-weight:700;color:#9aa5b1}
+#t.active{color:#f4f6f8}
+.modes{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0}
+.tab{background:#0f1216;border:1px solid #2a3038;color:#9aa5b1}
+.tab.on{background:#3d7eff;border-color:#3d7eff;color:#fff}
+.tab:disabled{opacity:.4}
+.examples{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.examples button{margin:0;font-size:13px;padding:8px 12px}
+.ctx{border:1px dashed #2a3038;border-radius:12px;padding:14px;margin-top:12px}
+.preserved{background:#101820;border-color:#2d4a6a}
+ul{margin:8px 0;padding-left:20px}
 </style>
 </head>
 <body>
 <div class="s">
   <div class="hdr">
-    <div><b>LabPal Finance</b> · FI-PROT-001</div>
-    <div id="t">00:00</div>
+    <div><b>LabPal Finance</b> · FI-PROT-001-RC1</div>
+    <div><small>Capture timer</small> <span id="t">—</span></div>
   </div>
 
   <section class="c intro">
-    <p>LabPal Finance helps you preserve market thoughts before hindsight changes the story. It is a research, decision-journaling, evidence-preservation, and self-audit tool. It does not yet provide personalized buy/sell recommendations, live entry zones, broker execution, or guaranteed profit signals.</p>
+    <p>LabPal Finance helps you preserve market thoughts before hindsight changes the story. It is a research, decision-journaling, evidence-preservation, and self-audit tool — not a signal engine or broker.</p>
     <div class="statusbar">
-      <span class="chip warn">Quick Capture: BUILT — TESTING</span>
+      <span class="chip warn">Quick Capture: BUILT — RETEST REQUIRED</span>
+      <span class="chip muted">Ask LabPal: PROTOTYPE SURFACE — NO LIVE EVIDENCE SOURCE</span>
+      <span class="chip muted">Investigate: BUILT — BEHAVIORALLY UNTESTED</span>
       <span class="chip muted">Profit Evidence Panel: ILLUSTRATIVE ONLY</span>
-      <span class="chip muted">Composite profitability score: BLOCKED UNTIL CALIBRATED</span>
-      <span class="chip muted">Entry zones/signals: NOT IN THIS MVP</span>
+      <span class="chip muted">Entry zones / signals / broker: NOT IN THIS MVP</span>
     </div>
   </section>
 
-  <section class="c help">
-    <h2>What can I ask LabPal?</h2>
-    <details open>
-      <summary>Allowed — research &amp; self-audit</summary>
-      <ul>
-        <li>“Help me preserve why I am considering QYLD.”</li>
-        <li>“What facts, interpretations, and unknowns are in my thesis?”</li>
-        <li>“What evidence would be needed before this becomes testable?”</li>
-        <li>“What would make this investment idea invalid?”</li>
-        <li>“Compare this thesis against my income objective.”</li>
-        <li>“Show me what is still unknown.”</li>
-      </ul>
-    </details>
-    <details>
-      <summary>Blocked — not yet supported</summary>
-      <ul class="blocked">
-        <li>“Tell me exactly what to buy now.”</li>
-        <li>“Give me guaranteed entry zones.”</li>
-        <li>“Rank stocks for immediate action.”</li>
-        <li>“Execute this trade.”</li>
-        <li>“Promise monthly profit.”</li>
-      </ul>
-    </details>
+  <nav class="modes">
+    <button type="button" class="tab on" id="tabAsk" onclick="showMode('ask')">Ask LabPal</button>
+    <button type="button" class="tab" id="tabCap" onclick="showMode('capture')">Quick Capture</button>
+    <button type="button" class="tab" id="tabInv" onclick="showMode('investigate')" disabled>Investigate</button>
+  </nav>
+
+  <!-- ASK LABPAL -->
+  <section id="modeAsk" class="c">
+    <h1>Ask LabPal</h1>
+    <p>Research questions only. LabPal will not fabricate current market answers or recommend trades.</p>
+    <label>Your research question</label>
+    <textarea id="askQ" placeholder="e.g. What evidence would I need to evaluate SCHD?"></textarea>
+    <p><small>Example questions — tap to try in Ask LabPal (not Quick Capture):</small></p>
+    <div class="examples">
+      <button type="button" class="ghost" onclick="fillAsk('How is the market today?')">How is the market today?</button>
+      <button type="button" class="ghost" onclick="fillAsk('Which companies are worth researching for the next 6 months?')">Worth researching (6 months)?</button>
+      <button type="button" class="ghost" onclick="fillAsk('What evidence would I need to evaluate SCHD?')">Evidence for SCHD?</button>
+    </div>
+    <button type="button" class="primary" onclick="runAsk()">Classify question</button>
+    <div id="askOut" class="hide"></div>
   </section>
 
-  <section id="a" class="c">
+  <!-- QUICK CAPTURE -->
+  <section id="modeCapture" class="c hide">
     <h1>Quick Capture</h1>
-    <p>Capture what you see before the outcome changes the story. Do not clean the wording. Target: under 60 seconds.</p>
-    <label>Research horizon <small>(organizes thesis timeframe only — no forecasts)</small></label>
-    <select id="hz">
-      <option>Now / intraday thought</option>
+    <p>For a thought you <b>already have</b>. Do not clean the wording. Target: under 60 seconds.</p>
+    <p class="notice hide" id="capHint">Timer started — capture your thought before hindsight changes it.</p>
+    <label>Instrument / company / ETF / theme</label>
+    <input id="i" placeholder="e.g. SCHD, XAGUSD, dividend income theme" onfocus="startTimer()" oninput="startTimer()">
+    <label>What are you thinking right now?</label>
+    <textarea id="q" placeholder="Your raw thought. Leave it messy." onfocus="startTimer()" oninput="startTimer()"></textarea>
+    <button type="button" class="ghost" onclick="toggleCtx()">Add context (optional)</button>
+    <div id="ctx" class="ctx hide">
+      <label>Research horizon <small>(organizes timeframe only — no forecasts)</small></label>
+      <select id="hz" onfocus="startTimer()" onchange="startTimer()">
+        <option>Now / intraday</option>
+        <option>3 months</option>
+        <option>6 months</option>
+        <option>1 year</option>
+      </select>
+      <label>Evidence fragment</label>
+      <textarea id="f" placeholder="Only if naturally available" onfocus="startTimer()"></textarea>
+      <label>What is UNKNOWN right now?</label>
+      <textarea id="u" placeholder="Costs, catalyst timing, downside… UNKNOWN is valid." onfocus="startTimer()"></textarea>
+    </div>
+    <div id="hzWarn" class="notice hide"></div>
+    <button type="button" class="primary" onclick="save()">Preserve thought</button>
+  </section>
+
+  <!-- POST-CAPTURE -->
+  <section id="postCap" class="c preserved hide">
+    <h2>Thought preserved</h2>
+    <div id="preserved"></div>
+    <p>Your original wording is locked. Investigation adds structure — it does not rewrite history.</p>
+    <button type="button" class="primary" onclick="openInvestigate()">Investigate this thought</button>
+  </section>
+
+  <!-- INVESTIGATE -->
+  <section id="modeInvestigate" class="c hide">
+    <h1>Investigate</h1>
+    <p>Organize what you captured. Optional — only after preservation.</p>
+    <div id="invPreserved" class="ev"></div>
+    <label>Facts</label>
+    <textarea id="invFacts" placeholder="Direct observations only"></textarea>
+    <label>Interpretations</label>
+    <textarea id="invInterp" placeholder="Your reading of the facts"></textarea>
+    <label>Unknowns</label>
+    <textarea id="invUnk"></textarea>
+    <label>Evidence needed</label>
+    <textarea id="invEv" placeholder="What would make this testable?"></textarea>
+    <label>What would change the thesis?</label>
+    <textarea id="invInv"></textarea>
+    <label>Contradictions / challenges</label>
+    <textarea id="invCon" placeholder="UNKNOWN is valid — absence is not proof of agreement."></textarea>
+    <label>Research horizon</label>
+    <select id="invHz">
+      <option>Now / intraday</option>
       <option>3 months</option>
       <option>6 months</option>
       <option>1 year</option>
     </select>
-    <label>Instrument / company / ETF / theme</label>
-    <input id="i" placeholder="e.g. QYLD, XAGUSD, dividend income theme">
-    <label>Raw thought</label>
-    <textarea id="q" placeholder="What are you seeing or thinking right now? Leave it messy."></textarea>
-    <label>Evidence fragment <small>(optional — only if naturally available)</small></label>
-    <textarea id="f" placeholder="Chart note, filing line, conversation snippet, etc."></textarea>
-    <label>What is UNKNOWN right now?</label>
-    <textarea id="u" placeholder="Costs, catalyst timing, downside scenario, data you do not have yet… UNKNOWN is valid."></textarea>
-    <button type="button" onclick="save()">Preserve capture</button>
-  </section>
-
-  <section id="b" class="c hide">
-    <h2>Structured Review</h2>
-    <p>Your original capture is preserved. Review adds meaning; it does not rewrite history.</p>
-    <label>Continuity</label>
-    <select id="ct"><option>DISCRETE</option><option>STANDING</option></select>
-    <label>Evidence class for this thought</label>
-    <select id="cl">
-      <option>UNKNOWN</option>
-      <option>FACT / DIRECT OBSERVATION</option>
-      <option>INTERPRETATION</option>
-    </select>
-    <label>What would change the thesis?</label>
-    <textarea id="inv" placeholder="Invalidation triggers, review conditions…"></textarea>
-    <label>Decision rule / review trigger</label>
-    <textarea id="r" placeholder="When will you revisit this? UNKNOWN is valid."></textarea>
+    <label>Continuity type</label>
+    <select id="invCt"><option>DISCRETE</option><option>STANDING</option></select>
     <p>
       <span class="chip warn">AI SUGGESTION: UNREVIEWED</span>
       <span class="chip">Human acceptance ≠ verification</span>
     </p>
-    <button type="button" onclick="derive()">Append review event</button>
+    <div id="invHzWarn" class="notice hide"></div>
+    <button type="button" class="primary" onclick="finishInvestigate()">Save investigation</button>
   </section>
 
-  <section id="c" class="c hide">
+  <!-- RESULTS -->
+  <section id="results" class="c hide">
     <h2>Current Understanding</h2>
     <div class="notice">Selection does not equal verification.</div>
     <div id="sum"></div>
     <h2>Profit Evidence Panel</h2>
-    <p>Profit evidence is not a recommendation. A positive outcome does not prove the decision process was good. A future optimizer requires repeated resolved cases, cost assumptions, risk boundaries, and calibration.</p>
-    <span class="chip good">POSITIVE OUTCOME · BASIS REQUIRED</span>
-    <span class="chip warn">EXPECTANCY · INSUFFICIENT DATA</span>
-    <span class="chip muted">READINESS · OBSERVING</span>
-    <p><small>Sample size: 1 · Costs: UNKNOWN · Risk measure: UNKNOWN · Illustrative labels only — not computed from your capture.</small></p>
+    <p><b>Profit evidence is not a recommendation.</b></p>
+    <span class="chip muted">NO OUTCOME EVIDENCE YET</span>
+    <span class="chip warn">Observed expectancy: INSUFFICIENT DATA</span>
+    <span class="chip muted">Costs: UNKNOWN</span>
+    <span class="chip muted">Risk boundary: UNKNOWN</span>
+    <span class="chip muted">Resolved cases: 0</span>
+    <p><small>No resolved outcome exists for this capture. A positive outcome would not automatically prove decision quality.</small></p>
   </section>
 </div>
 <script>
-let st = Date.now(), cap;
-setInterval(() => {
-  const s = Math.floor((Date.now() - st) / 1000);
-  t.textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
-}, 1000);
+let cap = null, timerStart = null, timerId = null;
 
 function e(v) {
   return String(v || 'UNKNOWN').replace(/[&<>"]/g, x => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[x]));
 }
 
-function save() {
-  cap = {
-    horizon: hz.value,
-    instrument: i.value || 'UNKNOWN',
-    thought: q.value || 'UNKNOWN',
-    fragment: f.value || 'UNKNOWN',
-    unknowns: u.value || 'UNKNOWN',
-    timestamp: new Date().toISOString(),
-    seconds: Math.floor((Date.now() - st) / 1000)
-  };
-  localStorage.setItem('lp', JSON.stringify(cap));
-  a.classList.add('hide');
-  b.classList.remove('hide');
+function showMode(mode) {
+  modeAsk.classList.toggle('hide', mode !== 'ask');
+  modeCapture.classList.toggle('hide', mode !== 'capture');
+  modeInvestigate.classList.toggle('hide', mode !== 'investigate');
+  tabAsk.classList.toggle('on', mode === 'ask');
+  tabCap.classList.toggle('on', mode === 'capture');
+  tabInv.classList.toggle('on', mode === 'investigate');
 }
 
-function derive() {
-  cap = cap || JSON.parse(localStorage.getItem('lp') || '{}');
-  const fact = cl.value === 'FACT / DIRECT OBSERVATION' ? cap.fragment !== 'UNKNOWN' ? cap.fragment : 'No direct observation recorded yet.' : '—';
-  const interp = cl.value === 'INTERPRETATION' ? cap.thought : cl.value === 'FACT / DIRECT OBSERVATION' ? '—' : 'Not classified as interpretation yet.';
-  const unk = [cap.unknowns, cl.value === 'UNKNOWN' ? cap.thought : ''].filter(Boolean).join(' · ') || 'UNKNOWN';
+function fillAsk(text) {
+  askQ.value = text;
+  showMode('ask');
+}
+
+function blockedQuestion(q) {
+  const l = q.toLowerCase();
+  return /\b(buy now|sell now|what to buy|entry zone|guaranteed|rank stocks|execute this trade|promise monthly profit|tell me exactly what)\b/.test(l);
+}
+
+function classifyAsk(q) {
+  const l = q.toLowerCase();
+  if (/\b(how is the market|market today)\b/.test(l)) return 'Market overview / current conditions';
+  if (/\b(worth researching|companies to research|screen)\b/.test(l)) return 'Research screening / candidate discovery';
+  if (/\b(evidence|evaluate|assess|due diligence)\b/.test(l)) return 'Evidence requirements / evaluation framework';
+  if (/\b(invalid|wrong|change my mind|thesis)\b/.test(l)) return 'Invalidation / thesis review';
+  if (/\b(unknown|still don.t know)\b/.test(l)) return 'Unknown surfacing';
+  return 'General research question';
+}
+
+function evidenceNeeded(kind, q) {
+  const base = [
+    'Primary source documents (filings, fund factsheets, issuer disclosures)',
+    'Cost assumptions including fees, spreads, and taxes',
+    'Time horizon aligned to the question',
+    'Explicit unknowns — what you do not have yet'
+  ];
+  if (kind.includes('Market overview')) {
+    return [...base, 'Connected market data feed (NOT AVAILABLE)', 'Macro context with dated sources'];
+  }
+  if (kind.includes('screening')) {
+    return [...base, 'Screening criteria tied to your objective (not a stock pick list)', 'Comparator set with stated inclusion/exclusion rules'];
+  }
+  if (kind.includes('Evidence requirements')) {
+    const ticker = (q.match(/\b[A-Z]{2,5}\b/) || [])[0];
+    return [...base, ticker ? `Issuer/fund documentation for ${ticker}` : 'Named instrument documentation', 'Distribution/yield mechanics if income is relevant', 'Downside scenario you would accept'];
+  }
+  return base;
+}
+
+function runAsk() {
+  const q = askQ.value.trim();
+  if (!q) { askOut.className = 'notice'; askOut.textContent = 'Enter a research question first.'; askOut.classList.remove('hide'); return; }
+  if (blockedQuestion(q)) {
+    askOut.innerHTML = `<div class="notice bad"><b>Not supported in this MVP</b><br>LabPal does not provide buy/sell recommendations, entry zones, stock rankings, broker execution, or profit promises.<br><small>Try: evidence requirements, unknowns, or invalidation framing.</small></div>`;
+    askOut.classList.remove('hide');
+    return;
+  }
+  const kind = classifyAsk(q);
+  const ev = evidenceNeeded(kind, q);
+  askOut.innerHTML = `
+    <div class="notice bad"><b>CURRENT EVIDENCE SOURCE NOT CONNECTED</b><br>LabPal cannot answer with live market data. No fabricated answer is shown.</div>
+    <div class="ev"><b>Question classification</b><br>${e(kind)}</div>
+    <div class="ev"><b>What evidence would be needed</b><ul>${ev.map(x => `<li>${e(x)}</li>`).join('')}</ul></div>
+    <div class="ev"><b>What LabPal will not do here</b><br>No stock recommendations · No entry zones · No rankings · No trade execution</div>
+    <p><span class="chip warn">AI SUGGESTION: UNREVIEWED</span> <span class="chip">Human acceptance ≠ verification</span></p>`;
+  askOut.classList.remove('hide');
+}
+
+function startTimer() {
+  if (timerStart) return;
+  timerStart = Date.now();
+  t.classList.add('active');
+  capHint.classList.remove('hide');
+  timerId = setInterval(() => {
+    const s = Math.floor((Date.now() - timerStart) / 1000);
+    t.textContent = String(Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0');
+  }, 250);
+}
+
+function toggleCtx() {
+  ctx.classList.toggle('hide');
+  if (!ctx.classList.contains('hide')) startTimer();
+}
+
+function horizonMismatch(text, horizon) {
+  const l = text.toLowerCase();
+  const long = /\b(6\s*months?|six\s*months?|1\s*year|one\s*year|12\s*months?|annual)\b/.test(l);
+  const now = horizon === 'Now / intraday';
+  return long && now;
+}
+
+function mismatchNotice(text, horizon) {
+  if (!horizonMismatch(text, horizon)) return '';
+  const mentioned = /\b1\s*year|one\s*year|12\s*months?\b/i.test(text) ? '1 year' : '6 months';
+  return `Possible horizon mismatch: your preserved words mention ${mentioned}. Current selected horizon: ${horizon}. Review?`;
+}
+
+function save() {
+  const thought = q.value.trim() || 'UNKNOWN';
+  const horizon = hz.value;
+  const warn = mismatchNotice(thought + ' ' + (u.value || '') + ' ' + (f.value || ''), horizon);
+  cap = {
+    instrument: i.value.trim() || 'UNKNOWN',
+    thought,
+    fragment: f.value.trim() || '',
+    unknowns: u.value.trim() || '',
+    horizon,
+    timestamp: new Date().toISOString(),
+    seconds: timerStart ? Math.floor((Date.now() - timerStart) / 1000) : 0
+  };
+  localStorage.setItem('lp', JSON.stringify(cap));
+  if (warn) { hzWarn.textContent = warn; hzWarn.classList.remove('hide'); } else { hzWarn.classList.add('hide'); }
+  preserved.innerHTML = `<b>${e(cap.instrument)}</b><br>${e(cap.thought)}<br><small>${cap.seconds}s · ${e(cap.timestamp)}</small>`;
+  postCap.classList.remove('hide');
+  tabInv.disabled = false;
+  showMode('capture');
+  modeCapture.classList.add('hide');
+}
+
+function openInvestigate() {
+  if (!cap) cap = JSON.parse(localStorage.getItem('lp') || 'null');
+  if (!cap) return;
+  invPreserved.innerHTML = `<b>Preserved thought</b> (original wording locked)<br>${e(cap.thought)}<br><small>${e(cap.instrument)} · ${e(cap.timestamp)}</small>`;
+  invUnk.value = cap.unknowns || '';
+  invHz.value = cap.horizon || 'Now / intraday';
+  invFacts.value = cap.fragment || '';
+  invInterp.value = cap.thought || '';
+  showMode('investigate');
+  postCap.classList.add('hide');
+}
+
+function finishInvestigate() {
+  if (!cap) cap = JSON.parse(localStorage.getItem('lp') || '{}');
+  const horizon = invHz.value;
+  const allText = [cap.thought, invFacts.value, invInterp.value, invUnk.value, invInv.value].join(' ');
+  const warn = mismatchNotice(allText, horizon);
+  if (warn) { invHzWarn.textContent = warn; invHzWarn.classList.remove('hide'); } else { invHzWarn.classList.add('hide'); }
+  cap.investigation = {
+    facts: invFacts.value, interpretations: invInterp.value, unknowns: invUnk.value,
+    evidenceNeeded: invEv.value, invalidation: invInv.value, contradictions: invCon.value,
+    horizon, continuity: invCt.value
+  };
+  localStorage.setItem('lp', JSON.stringify(cap));
   sum.innerHTML = `
-    <div class="ev"><b>Preserved thought</b><br>${e(cap.thought)}<br><small>${e(cap.instrument)} · ${e(cap.horizon)} · ${e(cap.timestamp)} · ${cap.seconds}s capture</small></div>
-    <div class="ev"><b>What is fact</b><br>${e(fact)}</div>
-    <div class="ev"><b>What is interpretation</b><br>${e(interp)}</div>
-    <div class="ev"><b>What is unknown</b><br>${e(unk)}</div>
-    <div class="ev"><b>What would change the thesis</b><br>${e(inv.value)}</div>
-    <div class="ev"><b>Contradictions / challenges</b><br>UNKNOWN — none preserved yet; absence is not proof of agreement.</div>
-    <div class="ev"><b>Continuity</b><br>${e(ct.value)} · <b>Review trigger</b>: ${e(r.value)}</div>`;
-  c.classList.remove('hide');
+    <div class="ev"><b>Preserved thought</b><br>${e(cap.thought)}<br><small>${e(cap.instrument)} · ${cap.seconds}s capture · original wording preserved</small></div>
+    <div class="ev"><b>What is fact</b><br>${e(invFacts.value) || 'UNKNOWN'}</div>
+    <div class="ev"><b>What is interpretation</b><br>${e(invInterp.value) || 'UNKNOWN'}</div>
+    <div class="ev"><b>What is unknown</b><br>${e(invUnk.value) || 'UNKNOWN'}</div>
+    <div class="ev"><b>Evidence needed</b><br>${e(invEv.value) || 'UNKNOWN'}</div>
+    <div class="ev"><b>What would change the thesis</b><br>${e(invInv.value) || 'UNKNOWN'}</div>
+    <div class="ev"><b>Contradictions / challenges</b><br>${e(invCon.value) || 'UNKNOWN — none preserved yet; absence is not proof of agreement.'}</div>
+    <div class="ev"><b>Research horizon</b><br>${e(horizon)} · <b>Continuity</b>: ${e(invCt.value)}</div>`;
+  results.classList.remove('hide');
+  results.scrollIntoView({ behavior: 'smooth' });
 }
 </script>
 </body>
