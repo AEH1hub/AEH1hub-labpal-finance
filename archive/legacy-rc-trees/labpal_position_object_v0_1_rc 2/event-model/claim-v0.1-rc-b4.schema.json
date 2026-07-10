@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://labpal.dev/schemas/finance/claim/v0.1-rc-b4.json",
+  "title": "LabPal Finance Claim v0.1-RC-B4",
+  "description": "Minimal claim object. Status is derived from events, not stored as source truth.",
+  "type": "object",
+  "required": [
+    "claim_id",
+    "claim_text",
+    "assertion_type"
+  ],
+  "properties": {
+    "claim_id": {
+      "type": "string"
+    },
+    "claim_text": {
+      "type": "string"
+    },
+    "assertion_type": {
+      "type": "string",
+      "enum": [
+        "OWNER_INTENT",
+        "DIRECT_OBSERVATION",
+        "DETERMINISTIC_DERIVATION",
+        "SOURCE_ASSERTION",
+        "DOMAIN_INTERPRETATION",
+        "SYNTHETIC_INFERENCE"
+      ]
+    },
+    "created_at": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source_claim_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "not": {
+    "anyOf": [
+      {
+        "required": [
+          "review_state"
+        ]
+      },
+      {
+        "required": [
+          "verification_state"
+        ]
+      },
+      {
+        "required": [
+          "confidence"
+        ]
+      },
+      {
+        "required": [
+          "confirmed"
+        ]
+      }
+    ]
+  },
+  "additionalProperties": false
+}

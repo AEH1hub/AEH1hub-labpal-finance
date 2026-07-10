@@ -1,0 +1,27 @@
+[
+  {
+    "id": "B5-F1",
+    "bad_output": "The five-responsibility Decision Object core is verified.",
+    "reason_rejected": "No verification event globally verifies Claim B. Selection does not equal verification."
+  },
+  {
+    "id": "B5-F2",
+    "bad_output": "Claim A is false and can be removed.",
+    "reason_rejected": "Claim A is preserved; it is challenged in a scope and revised by Claim B, not erased."
+  },
+  {
+    "id": "B5-F3",
+    "bad_output": "Because Amadou accepted Claim A, it is true.",
+    "reason_rejected": "Human acceptance is a review event, not evidentiary verification."
+  },
+  {
+    "id": "B5-F4",
+    "bad_output": "One support and one challenge cancel each other out.",
+    "reason_rejected": "Evidence scope matters more than count."
+  },
+  {
+    "id": "B5-F5",
+    "bad_output": "Claim B supersedes Claim A.",
+    "reason_rejected": "The recorded relationship is PROPOSED_REVISION_OF, not SUPERSEDES."
+  }
+]

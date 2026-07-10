@@ -1,0 +1,102 @@
+{
+  "schema_version": "0.1-rc",
+  "position_id": "PC-001-XAGUSD",
+  "continuity_type": "DISCRETE",
+  "identity": {
+    "decision_object": "Historical XAGUSD position",
+    "owner": "Amadou",
+    "position_type": "TRADE",
+    "components": [
+      "XAGUSD"
+    ],
+    "created_at": null,
+    "source_note": "Historical reconstruction; original decision clock not preserved."
+  },
+  "decision_purpose": {
+    "purpose_text": "Determine whether a bounded XAGUSD opportunity justified exposure.",
+    "purpose_state": "DERIVED_CONTEXT",
+    "source_reference": "PC-001 preserved historical fragments",
+    "unknown_reason": null
+  },
+  "reasoning_and_evidence": {
+    "reasoning_summary": null,
+    "reasoning_state": "UNKNOWN",
+    "evidence_records": [
+      {
+        "evidence_id": "E-PC001-001",
+        "claim_or_observation": "XAGUSD was traded and later associated with approximately +23.26 result.",
+        "evidence_mode": "RECORDED",
+        "source_reference": "Preserved LabPal Finance PC-001 reconstruction",
+        "source_type": "PRESERVED_CONVERSATION",
+        "recorded_at": null
+      }
+    ],
+    "open_questions": [
+      "Original entry reasoning not preserved.",
+      "Original invalidation rule not preserved.",
+      "Original risk boundary not preserved."
+    ]
+  },
+  "governing_rules": {
+    "rule_mode": "EXPOSURE_RULES",
+    "policy_elements": [
+      {
+        "policy_type": "entry_rule",
+        "policy_value": null,
+        "applicability_state": "UNKNOWN",
+        "evidence_reference": "No preserved entry rule",
+        "unknown_reason": [
+          "NOT_RECORDED"
+        ]
+      }
+    ]
+  },
+  "observation_and_review": {
+    "review_state": "RESOLVED",
+    "observed_reality": [
+      {
+        "assertion_id": "A-PC001-OUTCOME",
+        "claim": "The XAGUSD position had an approximately +23.26 recorded outcome.",
+        "scope": "financial_outcome_fragment",
+        "assertion_state": "SUPPORTED",
+        "evidence_basis": "PRESERVED_OWNER_STATEMENT",
+        "source_reference": "Preserved historical trading fragment",
+        "unknown_reason": null
+      }
+    ],
+    "decision_process_review": "Financial outcome is supported, but decision quality cannot be inferred because original reasoning is incomplete.",
+    "review_boundary": null
+  },
+  "material_assertions": [
+    {
+      "assertion_id": "A-PC001-001",
+      "claim": "XAGUSD was the instrument under consideration.",
+      "scope": "identity",
+      "assertion_state": "SUPPORTED",
+      "evidence_basis": "PRESERVED_OWNER_STATEMENT",
+      "source_reference": "Preserved PC-001 reconstruction",
+      "unknown_reason": null
+    },
+    {
+      "assertion_id": "A-PC001-002",
+      "claim": "Original thesis behind the XAGUSD trade is not preserved.",
+      "scope": "reasoning",
+      "assertion_state": "UNKNOWN",
+      "evidence_basis": null,
+      "source_reference": null,
+      "unknown_reason": [
+        "NOT_RECORDED"
+      ]
+    }
+  ],
+  "state_history": [
+    {
+      "from_state": null,
+      "to_state": "RESOLVED",
+      "reason": "Financial outcome fragment preserved; original state path incomplete.",
+      "source_reference": "PC-001 historical reconstruction",
+      "contributor": "LabPal review",
+      "recorded_at": null
+    }
+  ]
+}

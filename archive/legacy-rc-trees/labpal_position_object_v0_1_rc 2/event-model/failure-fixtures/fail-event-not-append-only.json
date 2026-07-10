@@ -1,0 +1,20 @@
+{
+  "event_id": "EVT-B4-001",
+  "event_type": "ORIGIN_EVENT",
+  "subject_id": "CLM-B4-A",
+  "occurred_at": null,
+  "actor": {
+    "actor_type": "AI",
+    "actor_id": "LABPAL_TEST_AI",
+    "actor_role": "assistant"
+  },
+  "payload": {
+    "origin_mode": "AI_GENERATED",
+    "claim_text": "The five-layer Position Object appears sufficient for MVP implementation.",
+    "historical_wording_preserved": false
+  },
+  "source_references": [
+    "FI-001A-RC-A2/P1"
+  ],
+  "append_only": false
+}

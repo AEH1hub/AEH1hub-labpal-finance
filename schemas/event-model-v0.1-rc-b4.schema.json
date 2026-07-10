@@ -1,0 +1,299 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://labpal.dev/schemas/finance/events/v0.1-rc-b4.json",
+  "title": "LabPal Finance Event Model v0.1-RC-B4",
+  "description": "Append-only event skeleton for origin, review, verification, selection, and claim relationship provenance.",
+  "type": "object",
+  "required": [
+    "event_id",
+    "event_type",
+    "subject_id",
+    "occurred_at"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "ORIGIN_EVENT",
+        "REVIEW_EVENT",
+        "VERIFICATION_EVENT",
+        "SELECTION_EVENT",
+        "CLAIM_RELATIONSHIP_EVENT"
+      ]
+    },
+    "subject_id": {
+      "type": "string",
+      "description": "Claim, evidence, position, or context being acted on."
+    },
+    "occurred_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "ISO timestamp when known; null for reconstructed/historical events."
+    },
+    "actor": {
+      "type": "object",
+      "required": [
+        "actor_type",
+        "actor_id"
+      ],
+      "properties": {
+        "actor_type": {
+          "type": "string",
+          "enum": [
+            "HUMAN",
+            "AI",
+            "SYSTEM",
+            "EXTERNAL_SOURCE",
+            "SPECIALIST"
+          ]
+        },
+        "actor_id": {
+          "type": "string"
+        },
+        "actor_role": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "payload": {
+      "type": "object"
+    },
+    "source_references": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "append_only": {
+      "const": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "ORIGIN_EVENT"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "required": [
+              "origin_mode"
+            ],
+            "properties": {
+              "origin_mode": {
+                "type": "string",
+                "enum": [
+                  "AI_GENERATED",
+                  "HUMAN_STATED",
+                  "SYSTEM_OBSERVED",
+                  "EXTERNAL_SOURCE_EXTRACTED",
+                  "DERIVED_RECONSTRUCTION"
+                ]
+              },
+              "claim_text": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "historical_wording_preserved": {
+                "type": "boolean"
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "REVIEW_EVENT"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "required": [
+              "review_action"
+            ],
+            "properties": {
+              "review_action": {
+                "type": "string",
+                "enum": [
+                  "ACCEPT",
+                  "REJECT",
+                  "REQUEST_CLARIFICATION",
+                  "NO_POSITION"
+                ]
+              },
+              "review_note": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "review_scope": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "VERIFICATION_EVENT"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "required": [
+              "verification_result",
+              "verification_scope"
+            ],
+            "properties": {
+              "verification_result": {
+                "type": "string",
+                "enum": [
+                  "SUPPORTS",
+                  "CHALLENGES",
+                  "INCONCLUSIVE"
+                ]
+              },
+              "verification_scope": {
+                "type": "string"
+              },
+              "test_reference": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "evidence_references": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "SELECTION_EVENT"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "required": [
+              "context_id",
+              "selection_decision",
+              "selection_reason"
+            ],
+            "properties": {
+              "context_id": {
+                "type": "string"
+              },
+              "selection_decision": {
+                "type": "string",
+                "enum": [
+                  "SELECTED",
+                  "EXCLUDED"
+                ]
+              },
+              "selection_reason": {
+                "type": "string"
+              },
+              "mandatory_contradictions": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "event_type": {
+            "const": "CLAIM_RELATIONSHIP_EVENT"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "payload": {
+            "type": "object",
+            "required": [
+              "relationship_type",
+              "target_claim_id"
+            ],
+            "properties": {
+              "relationship_type": {
+                "type": "string",
+                "enum": [
+                  "PROPOSED_REVISION_OF",
+                  "SUPERSEDES",
+                  "CONTRADICTS",
+                  "SUPPORTS",
+                  "DERIVED_FROM"
+                ]
+              },
+              "target_claim_id": {
+                "type": "string"
+              },
+              "relationship_reason": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "additionalProperties": false
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

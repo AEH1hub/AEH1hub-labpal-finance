@@ -1,0 +1,42 @@
+{
+  "guardrail_version": "0.1-rc-b3",
+  "title": "LabPal Finance Position Object Semantic Guardrails",
+  "purpose": "Rules that JSON Schema alone cannot enforce.",
+  "rules": [
+    {
+      "id": "SG-001",
+      "name": "Profit is not proof",
+      "rule": "A positive financial outcome must not be used as sole evidence of decision quality.",
+      "detect": "decision_process_review contains causal claim that outcome proves decision quality without reasoning evidence.",
+      "severity": "BLOCKER"
+    },
+    {
+      "id": "SG-002",
+      "name": "State delta is not transaction",
+      "rule": "Checkpoint quantity deltas must not be promoted into specific transaction events without supporting event evidence.",
+      "detect": "assertion claims a purchase/sale occurred with evidence_basis CONTEXTUAL_LINKAGE or checkpoint-only source.",
+      "severity": "BLOCKER"
+    },
+    {
+      "id": "SG-003",
+      "name": "AI is not sole confirmation authority",
+      "rule": "AI-generated analysis alone cannot support an appropriateness, regulatory, causal, or decision-quality claim.",
+      "detect": "SUPPORTED assertion with source_reference indicating AI-only analysis for synthetic inference / appropriateness scope.",
+      "severity": "BLOCKER"
+    },
+    {
+      "id": "SG-004",
+      "name": "Derived context is not historical wording",
+      "rule": "A derived contextual reconstruction must not be labeled as a supported historical statement.",
+      "detect": "purpose_state SUPPORTED while source_reference indicates derived or contextual reconstruction.",
+      "severity": "BLOCKER"
+    },
+    {
+      "id": "SG-005",
+      "name": "Unknown must remain actionable by cause",
+      "rule": "UNKNOWN assertions must identify why they are unknown and must not be replaced by plausible reconstruction.",
+      "detect": "UNKNOWN assertion lacks unknown_reason or is accompanied by fabricated historical explanation.",
+      "severity": "BLOCKER"
+    }
+  ]
+}

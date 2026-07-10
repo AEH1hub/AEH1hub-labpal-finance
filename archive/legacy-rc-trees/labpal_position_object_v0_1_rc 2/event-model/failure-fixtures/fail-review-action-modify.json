@@ -1,0 +1,20 @@
+{
+  "event_id": "EVT-B4-002",
+  "event_type": "REVIEW_EVENT",
+  "subject_id": "CLM-B4-A",
+  "occurred_at": null,
+  "actor": {
+    "actor_type": "HUMAN",
+    "actor_id": "AMADOU",
+    "actor_role": "founder/owner"
+  },
+  "payload": {
+    "review_action": "MODIFY",
+    "review_note": "Accepted as a working observation, not as verified truth.",
+    "review_scope": "working architecture discussion"
+  },
+  "source_references": [
+    "FI-001A-RC-A2/P1"
+  ],
+  "append_only": true
+}

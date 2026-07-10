@@ -1,0 +1,155 @@
+[
+  {
+    "event_id": "EVT-B4-001",
+    "event_type": "ORIGIN_EVENT",
+    "subject_id": "CLM-B4-A",
+    "occurred_at": null,
+    "actor": {
+      "actor_type": "AI",
+      "actor_id": "LABPAL_TEST_AI",
+      "actor_role": "assistant"
+    },
+    "payload": {
+      "origin_mode": "AI_GENERATED",
+      "claim_text": "The five-layer Position Object appears sufficient for MVP implementation.",
+      "historical_wording_preserved": false
+    },
+    "source_references": [
+      "FI-001A-RC-A2/P1"
+    ],
+    "append_only": true
+  },
+  {
+    "event_id": "EVT-B4-002",
+    "event_type": "REVIEW_EVENT",
+    "subject_id": "CLM-B4-A",
+    "occurred_at": null,
+    "actor": {
+      "actor_type": "HUMAN",
+      "actor_id": "AMADOU",
+      "actor_role": "founder/owner"
+    },
+    "payload": {
+      "review_action": "ACCEPT",
+      "review_note": "Accepted as a working observation, not as verified truth.",
+      "review_scope": "working architecture discussion"
+    },
+    "source_references": [
+      "FI-001A-RC-A2/P1"
+    ],
+    "append_only": true
+  },
+  {
+    "event_id": "EVT-B4-003",
+    "event_type": "VERIFICATION_EVENT",
+    "subject_id": "CLM-B4-A",
+    "occurred_at": null,
+    "actor": {
+      "actor_type": "SYSTEM",
+      "actor_id": "LABPAL_REVIEW",
+      "actor_role": "adversarial probe"
+    },
+    "payload": {
+      "verification_result": "SUPPORTS",
+      "verification_scope": "historical thin-object preservation",
+      "test_reference": "FI-001A historical probes",
+      "evidence_references": [
+        "PC-001",
+        "PC-003",
+        "PC-004"
+      ]
+    },
+    "source_references": [
+      "FI-001A-RC-A2/P2"
+    ],
+    "append_only": true
+  },
+  {
+    "event_id": "EVT-B4-004",
+    "event_type": "VERIFICATION_EVENT",
+    "subject_id": "CLM-B4-A",
+    "occurred_at": null,
+    "actor": {
+      "actor_type": "SYSTEM",
+      "actor_id": "LABPAL_REVIEW",
+      "actor_role": "adversarial probe"
+    },
+    "payload": {
+      "verification_result": "CHALLENGES",
+      "verification_scope": "cross-continuity-type sufficiency",
+      "test_reference": "FI-001D-P2",
+      "evidence_references": [
+        "QYLD/SCHD/VXUS standing allocation context"
+      ]
+    },
+    "source_references": [
+      "FI-001A-RC-A2/P2"
+    ],
+    "append_only": true
+  },
+  {
+    "event_id": "EVT-B4-005",
+    "event_type": "ORIGIN_EVENT",
+    "subject_id": "CLM-B4-B",
+    "occurred_at": null,
+    "actor": {
+      "actor_type": "HUMAN",
+      "actor_id": "ARCHITECTURAL_ENGINEER",
+      "actor_role": "reviewer"
+    },
+    "payload": {
+      "origin_mode": "HUMAN_STATED",
+      "claim_text": "The five-responsibility Decision Object core survives, but implementation semantics require continuity-type specialization.",
+      "historical_wording_preserved": true
+    },
+    "source_references": [
+      "FI-001A-RC-A2/P3"
+    ],
+    "append_only": true
+  },
+  {
+    "event_id": "EVT-B4-006",
+    "event_type": "CLAIM_RELATIONSHIP_EVENT",
+    "subject_id": "CLM-B4-B",
+    "occurred_at": null,
+    "actor": {
+      "actor_type": "SYSTEM",
+      "actor_id": "LABPAL_REVIEW",
+      "actor_role": "claim graph"
+    },
+    "payload": {
+      "relationship_type": "PROPOSED_REVISION_OF",
+      "target_claim_id": "CLM-B4-A",
+      "relationship_reason": "Claim A was too broad after the STANDING-object probe."
+    },
+    "source_references": [
+      "FI-001A-RC-A2/P2",
+      "FI-001A-RC-A2/P3"
+    ],
+    "append_only": true
+  },
+  {
+    "event_id": "EVT-B4-007",
+    "event_type": "SELECTION_EVENT",
+    "subject_id": "CLM-B4-B",
+    "occurred_at": null,
+    "actor": {
+      "actor_type": "AI",
+      "actor_id": "LIVIGENCE_AI_TEST",
+      "actor_role": "selection"
+    },
+    "payload": {
+      "context_id": "CTX-RC-READINESS",
+      "selection_decision": "SELECTED",
+      "selection_reason": "Claim B is the current best candidate for explaining P2/P3 evidence.",
+      "mandatory_contradictions": [
+        "EVT-B4-004"
+      ]
+    },
+    "source_references": [
+      "FI-001A-RC-A2/P2",
+      "FI-001A-RC-A2/P3"
+    ],
+    "append_only": true
+  }
+]

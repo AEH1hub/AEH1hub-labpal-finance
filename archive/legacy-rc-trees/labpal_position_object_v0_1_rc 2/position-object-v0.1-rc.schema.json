@@ -1,0 +1,493 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://labpal.dev/schemas/finance/position-object/v0.1-rc.json",
+  "title": "LabPal Finance Position Object v0.1-RC",
+  "description": "Evidence-earned release-candidate schema for LabPal Finance Position Objects. It preserves decision understanding, material assertions, provenance, continuity type, and unknowns without generating recommendations.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "position_id",
+    "continuity_type",
+    "identity",
+    "decision_purpose",
+    "reasoning_and_evidence",
+    "governing_rules",
+    "observation_and_review",
+    "material_assertions"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1-rc"
+    },
+    "position_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "continuity_type": {
+      "type": "string",
+      "enum": [
+        "DISCRETE",
+        "STANDING"
+      ]
+    },
+    "identity": {
+      "type": "object",
+      "required": [
+        "decision_object",
+        "owner",
+        "position_type"
+      ],
+      "properties": {
+        "decision_object": {
+          "type": "string"
+        },
+        "owner": {
+          "type": "string"
+        },
+        "position_type": {
+          "type": "string",
+          "enum": [
+            "TRADE",
+            "INVESTMENT",
+            "ALLOCATION",
+            "RESEARCH",
+            "POLICY"
+          ]
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "created_at": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "ISO timestamp if known; null if not preserved."
+        },
+        "source_note": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "decision_purpose": {
+      "type": "object",
+      "required": [
+        "purpose_text",
+        "purpose_state"
+      ],
+      "properties": {
+        "purpose_text": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "purpose_state": {
+          "type": "string",
+          "enum": [
+            "SUPPORTED",
+            "DERIVED_CONTEXT",
+            "UNKNOWN"
+          ]
+        },
+        "source_reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "unknown_reason": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "NOT_RECORDED",
+              "NOT_INVESTIGATED",
+              "INSUFFICIENT_EVIDENCE",
+              "CONFLICTING_EVIDENCE",
+              "EVIDENCE_LOST",
+              "CURRENTLY_UNKNOWABLE"
+            ]
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "reasoning_and_evidence": {
+      "type": "object",
+      "required": [
+        "reasoning_summary",
+        "reasoning_state",
+        "evidence_records"
+      ],
+      "properties": {
+        "reasoning_summary": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "reasoning_state": {
+          "type": "string",
+          "enum": [
+            "SUPPORTED",
+            "PARTIAL",
+            "UNKNOWN"
+          ]
+        },
+        "evidence_records": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/evidence_record"
+          }
+        },
+        "open_questions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "governing_rules": {
+      "type": "object",
+      "required": [
+        "rule_mode",
+        "policy_elements"
+      ],
+      "properties": {
+        "rule_mode": {
+          "type": "string",
+          "enum": [
+            "EXPOSURE_RULES",
+            "POLICY_RULES",
+            "UNKNOWN"
+          ]
+        },
+        "policy_elements": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/policy_element"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "observation_and_review": {
+      "type": "object",
+      "required": [
+        "review_state",
+        "observed_reality",
+        "decision_process_review"
+      ],
+      "properties": {
+        "review_state": {
+          "type": "string",
+          "enum": [
+            "RESOLVED",
+            "ONGOING",
+            "UNRESOLVED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "observed_reality": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/material_assertion"
+          }
+        },
+        "decision_process_review": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "review_boundary": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "boundary_source": {
+              "type": "string",
+              "enum": [
+                "TIME_CONDITION",
+                "OBJECTIVE_CONDITION",
+                "STATE_CHANGE",
+                "EVIDENCE_CHANGE",
+                "UNKNOWN"
+              ]
+            },
+            "source_reference": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "boundary_reason": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "review_state": {
+              "type": "string",
+              "enum": [
+                "UNREVIEWED",
+                "CONFIRMED",
+                "DISMISSED",
+                "UNRESOLVED"
+              ]
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "material_assertions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/material_assertion"
+      },
+      "minItems": 1
+    },
+    "state_history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "to_state",
+          "source_reference"
+        ],
+        "properties": {
+          "from_state": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "to_state": {
+            "type": "string"
+          },
+          "reason": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_reference": {
+            "type": "string"
+          },
+          "contributor": {
+            "type": "string"
+          },
+          "recorded_at": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "evidence_record": {
+      "type": "object",
+      "required": [
+        "evidence_id",
+        "claim_or_observation",
+        "evidence_mode",
+        "source_reference"
+      ],
+      "properties": {
+        "evidence_id": {
+          "type": "string"
+        },
+        "claim_or_observation": {
+          "type": "string"
+        },
+        "evidence_mode": {
+          "type": "string",
+          "enum": [
+            "RECORDED",
+            "REMEMBERED",
+            "DERIVED",
+            "SYNTHETIC",
+            "OFFICIAL_SOURCE"
+          ]
+        },
+        "source_reference": {
+          "type": "string"
+        },
+        "source_type": {
+          "type": "string",
+          "enum": [
+            "PRESERVED_CONVERSATION",
+            "OWNER_STATEMENT",
+            "BROKER_RECORD",
+            "OFFICIAL_EXTERNAL_SOURCE",
+            "AI_GENERATED_ANALYSIS",
+            "SYSTEM_CALCULATION",
+            "UNKNOWN"
+          ]
+        },
+        "recorded_at": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "policy_element": {
+      "type": "object",
+      "required": [
+        "policy_type",
+        "policy_value",
+        "applicability_state",
+        "evidence_reference"
+      ],
+      "properties": {
+        "policy_type": {
+          "type": "string"
+        },
+        "policy_value": {},
+        "applicability_state": {
+          "type": "string",
+          "enum": [
+            "SUPPORTED",
+            "SUPERSEDED",
+            "UNKNOWN",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "evidence_reference": {
+          "type": "string"
+        },
+        "unknown_reason": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "material_assertion": {
+      "type": "object",
+      "required": [
+        "assertion_id",
+        "claim",
+        "scope",
+        "assertion_state"
+      ],
+      "properties": {
+        "assertion_id": {
+          "type": "string"
+        },
+        "claim": {
+          "type": "string"
+        },
+        "scope": {
+          "type": "string"
+        },
+        "assertion_state": {
+          "type": "string",
+          "enum": [
+            "SUPPORTED",
+            "UNKNOWN"
+          ]
+        },
+        "evidence_basis": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "PRESERVED_OWNER_STATEMENT",
+            "PRESERVED_CHECKPOINT",
+            "ORDER_STATE",
+            "DETERMINISTIC_DERIVATION",
+            "CONTEXTUAL_LINKAGE",
+            "OFFICIAL_EXTERNAL_SOURCE",
+            null
+          ]
+        },
+        "source_reference": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "unknown_reason": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "string",
+            "enum": [
+              "NOT_RECORDED",
+              "NOT_INVESTIGATED",
+              "INSUFFICIENT_EVIDENCE",
+              "CONFLICTING_EVIDENCE",
+              "EVIDENCE_LOST",
+              "CURRENTLY_UNKNOWABLE"
+            ]
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "assertion_state": {
+                "const": "SUPPORTED"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "evidence_basis",
+              "source_reference"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "assertion_state": {
+                "const": "UNKNOWN"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "unknown_reason"
+            ]
+          }
+        }
+      ],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

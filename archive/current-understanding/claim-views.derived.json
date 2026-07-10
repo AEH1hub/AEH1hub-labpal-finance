@@ -1,0 +1,150 @@
+[
+  {
+    "claim": {
+      "claim_id": "CLM-B4-A",
+      "claim_text": "The five-layer Position Object appears sufficient for MVP implementation.",
+      "assertion_type": "SYNTHETIC_INFERENCE",
+      "created_at": null,
+      "source_claim_id": null
+    },
+    "origins": [
+      {
+        "event_id": "EVT-B4-001",
+        "event_type": "ORIGIN_EVENT",
+        "subject_id": "CLM-B4-A",
+        "occurred_at": null,
+        "actor": {
+          "actor_type": "AI",
+          "actor_id": "LABPAL_TEST_AI",
+          "actor_role": "assistant"
+        },
+        "payload": {
+          "origin_mode": "AI_GENERATED",
+          "claim_text": "The five-layer Position Object appears sufficient for MVP implementation.",
+          "historical_wording_preserved": false
+        },
+        "source_references": [
+          "FI-001A-RC-A2/P1"
+        ],
+        "append_only": true
+      }
+    ],
+    "review_summary": {
+      "ACCEPT": [
+        {
+          "actor": {
+            "actor_type": "HUMAN",
+            "actor_id": "AMADOU",
+            "actor_role": "founder/owner"
+          },
+          "note": "Accepted as a working observation, not as verified truth.",
+          "scope": "working architecture discussion"
+        }
+      ]
+    },
+    "verification_summary": {
+      "SUPPORTS": [
+        {
+          "scope": "historical thin-object preservation",
+          "test_reference": "FI-001A historical probes",
+          "evidence_references": [
+            "PC-001",
+            "PC-003",
+            "PC-004"
+          ]
+        }
+      ],
+      "CHALLENGES": [
+        {
+          "scope": "cross-continuity-type sufficiency",
+          "test_reference": "FI-001D-P2",
+          "evidence_references": [
+            "QYLD/SCHD/VXUS standing allocation context"
+          ]
+        }
+      ]
+    },
+    "relationships": [
+      {
+        "from": "CLM-B4-B",
+        "to": "CLM-B4-A",
+        "type": "PROPOSED_REVISION_OF",
+        "reason": "Claim A was too broad after the STANDING-object probe."
+      }
+    ],
+    "selection_events": [],
+    "derived_epistemic_position": "MIXED_SCOPE_EVIDENCE",
+    "derivation_explanation": "Evidence supports the claim in at least one scope and challenges it in at least one different scope. No global verification is derived.",
+    "warnings": []
+  },
+  {
+    "claim": {
+      "claim_id": "CLM-B4-B",
+      "claim_text": "The five-responsibility Decision Object core survives, but implementation semantics require continuity-type specialization.",
+      "assertion_type": "SYNTHETIC_INFERENCE",
+      "created_at": null,
+      "source_claim_id": "CLM-B4-A"
+    },
+    "origins": [
+      {
+        "event_id": "EVT-B4-005",
+        "event_type": "ORIGIN_EVENT",
+        "subject_id": "CLM-B4-B",
+        "occurred_at": null,
+        "actor": {
+          "actor_type": "HUMAN",
+          "actor_id": "ARCHITECTURAL_ENGINEER",
+          "actor_role": "reviewer"
+        },
+        "payload": {
+          "origin_mode": "HUMAN_STATED",
+          "claim_text": "The five-responsibility Decision Object core survives, but implementation semantics require continuity-type specialization.",
+          "historical_wording_preserved": true
+        },
+        "source_references": [
+          "FI-001A-RC-A2/P3"
+        ],
+        "append_only": true
+      }
+    ],
+    "review_summary": {},
+    "verification_summary": {},
+    "relationships": [
+      {
+        "from": "CLM-B4-B",
+        "to": "CLM-B4-A",
+        "type": "PROPOSED_REVISION_OF",
+        "reason": "Claim A was too broad after the STANDING-object probe."
+      }
+    ],
+    "selection_events": [
+      {
+        "event_id": "EVT-B4-007",
+        "event_type": "SELECTION_EVENT",
+        "subject_id": "CLM-B4-B",
+        "occurred_at": null,
+        "actor": {
+          "actor_type": "AI",
+          "actor_id": "LIVIGENCE_AI_TEST",
+          "actor_role": "selection"
+        },
+        "payload": {
+          "context_id": "CTX-RC-READINESS",
+          "selection_decision": "SELECTED",
+          "selection_reason": "Claim B is the current best candidate for explaining P2/P3 evidence.",
+          "mandatory_contradictions": [
+            "EVT-B4-004"
+          ]
+        },
+        "source_references": [
+          "FI-001A-RC-A2/P2",
+          "FI-001A-RC-A2/P3"
+        ],
+        "append_only": true
+      }
+    ],
+    "derived_epistemic_position": "UNREVIEWED_UNTESTED",
+    "derivation_explanation": "No review or verification events are recorded.",
+    "warnings": []
+  }
+]

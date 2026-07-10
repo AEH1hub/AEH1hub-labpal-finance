@@ -1,0 +1,93 @@
+{
+  "milestone": "FI-001A-RC-B6",
+  "status": "PASS",
+  "schema_validation": [
+    {
+      "file": "pc-001-xagusd-discrete.fixture.json",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "file": "pc-004-standing-dca.fixture.json",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "file": "CLM-B4-A",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "file": "CLM-B4-B",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "file": "EVT-B4-001",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "file": "EVT-B4-002",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "file": "EVT-B4-003",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "file": "EVT-B4-004",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "file": "EVT-B4-005",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "file": "EVT-B4-006",
+      "valid": true,
+      "errors": []
+    },
+    {
+      "file": "EVT-B4-007",
+      "valid": true,
+      "errors": []
+    }
+  ],
+  "semantic_validation": [
+    {
+      "file": "pc-001-xagusd-discrete.fixture.json",
+      "valid": true,
+      "violations": []
+    },
+    {
+      "file": "pc-004-standing-dca.fixture.json",
+      "valid": true,
+      "violations": []
+    }
+  ],
+  "current_understanding": {
+    "status": "WORKING_INTERPRETATION",
+    "context_id": "CTX-RC-READINESS",
+    "selected_claim_id": "CLM-B4-B",
+    "current_statement": "The five-responsibility Decision Object core survives, but implementation semantics require continuity-type specialization.",
+    "verification_notice": "Selection does not equal verification.",
+    "support_scopes": [],
+    "challenge_scopes": [],
+    "relationships": [
+      {
+        "relationship_type": "PROPOSED_REVISION_OF",
+        "target_claim_id": "CLM-B4-A",
+        "relationship_reason": "Claim A was too broad after the STANDING-object probe."
+      }
+    ],
+    "mandatory_contradiction_event_ids": [
+      "EVT-B4-004"
+    ],
+    "history_preserved": true
+  }
+}

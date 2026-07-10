@@ -1,0 +1,143 @@
+{
+  "schema_version": "0.1-rc",
+  "position_id": "PC-004-STANDING-DCA",
+  "continuity_type": "HYBRID",
+  "identity": {
+    "decision_object": "Recurring QYLD/SCHD/VXUS allocation context",
+    "owner": "Amadou",
+    "position_type": "ALLOCATION",
+    "components": [
+      "QYLD",
+      "SCHD",
+      "VXUS"
+    ],
+    "created_at": null,
+    "source_note": "Historical allocation context; formal original policy wording not preserved."
+  },
+  "decision_purpose": {
+    "purpose_text": "Govern recurring allocation behavior toward preserved income objectives.",
+    "purpose_state": "DERIVED_CONTEXT",
+    "source_reference": "Preserved DCA plan and income targets",
+    "unknown_reason": null
+  },
+  "reasoning_and_evidence": {
+    "reasoning_summary": "Income-focused allocation context is supported; full historical rationale remains unknown.",
+    "reasoning_state": "PARTIAL",
+    "evidence_records": [
+      {
+        "evidence_id": "E-PC004-001",
+        "claim_or_observation": "70/30 QYLD/SCHD allocation plan with approximately $140/month contribution was preserved.",
+        "evidence_mode": "RECORDED",
+        "source_reference": "Preserved LabPal Finance DCA context",
+        "source_type": "PRESERVED_CONVERSATION",
+        "recorded_at": null
+      },
+      {
+        "evidence_id": "E-PC004-002",
+        "claim_or_observation": "VXUS was paused for approximately three months.",
+        "evidence_mode": "RECORDED",
+        "source_reference": "Preserved LabPal Finance PC-004 reconstruction",
+        "source_type": "PRESERVED_CONVERSATION",
+        "recorded_at": null
+      }
+    ],
+    "open_questions": [
+      "Exact historical reason for VXUS pause not preserved.",
+      "Formal review cadence not preserved.",
+      "Actual executed contribution ledger incomplete."
+    ]
+  },
+  "governing_rules": {
+    "rule_mode": "POLICY_RULES",
+    "policy_elements": [
+      {
+        "policy_type": "allocation_rule",
+        "policy_value": {
+          "QYLD": 70,
+          "SCHD": 30
+        },
+        "applicability_state": "SUPPORTED",
+        "evidence_reference": "E-PC004-001",
+        "unknown_reason": null
+      },
+      {
+        "policy_type": "vxus_pause",
+        "policy_value": "approximately three months",
+        "applicability_state": "SUPPORTED",
+        "evidence_reference": "E-PC004-002",
+        "unknown_reason": null
+      },
+      {
+        "policy_type": "vxus_pause_reason",
+        "policy_value": null,
+        "applicability_state": "UNKNOWN",
+        "evidence_reference": "E-PC004-002",
+        "unknown_reason": [
+          "NOT_RECORDED"
+        ]
+      }
+    ]
+  },
+  "observation_and_review": {
+    "review_state": "ONGOING",
+    "observed_reality": [
+      {
+        "assertion_id": "A-PC004-OBS-001",
+        "claim": "The allocation context has no terminal outcome in the preserved evidence set.",
+        "scope": "standing_review_boundary",
+        "assertion_state": "SUPPORTED",
+        "evidence_basis": "CONTEXTUAL_LINKAGE",
+        "source_reference": "FI-001D-P2 and P4 review findings",
+        "unknown_reason": null
+      }
+    ],
+    "decision_process_review": "The standing allocation object can be reviewed at objective, state-change, or evidence-change boundaries; no formal historical cadence is preserved.",
+    "review_boundary": {
+      "boundary_source": "STATE_CHANGE",
+      "source_reference": "E-PC004-002",
+      "boundary_reason": "VXUS pause represents preserved allocation behavior change; rationale remains unknown.",
+      "review_state": "CONFIRMED"
+    }
+  },
+  "material_assertions": [
+    {
+      "assertion_id": "A-PC004-001",
+      "claim": "The 70/30 QYLD/SCHD allocation plan existed in the preserved historical context.",
+      "scope": "allocation_policy",
+      "assertion_state": "SUPPORTED",
+      "evidence_basis": "PRESERVED_OWNER_STATEMENT",
+      "source_reference": "E-PC004-001",
+      "unknown_reason": null
+    },
+    {
+      "assertion_id": "A-PC004-002",
+      "claim": "VXUS was paused for approximately three months.",
+      "scope": "allocation_behavior",
+      "assertion_state": "SUPPORTED",
+      "evidence_basis": "PRESERVED_OWNER_STATEMENT",
+      "source_reference": "E-PC004-002",
+      "unknown_reason": null
+    },
+    {
+      "assertion_id": "A-PC004-003",
+      "claim": "The exact reason for the VXUS pause is not preserved.",
+      "scope": "decision_rationale",
+      "assertion_state": "UNKNOWN",
+      "evidence_basis": null,
+      "source_reference": null,
+      "unknown_reason": [
+        "NOT_RECORDED"
+      ]
+    }
+  ],
+  "state_history": [
+    {
+      "from_state": null,
+      "to_state": "PAUSED_BEHAVIOR_OBSERVED",
+      "reason": null,
+      "source_reference": "E-PC004-002",
+      "contributor": "LabPal review",
+      "recorded_at": null
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "context_id": "CTX-RC-READINESS",
+  "selected_claim_id": "CLM-B4-B",
+  "current_statement": "The five-responsibility Decision Object core is the current working interpretation. It is preferred over the earlier five-layer MVP-sufficiency claim because Claim A was challenged by the STANDING-object probe and Claim B was proposed as a narrower revision.",
+  "must_show": {
+    "preserved_prior_claim": "CLM-B4-A",
+    "open_challenge": {
+      "claim_id": "CLM-B4-A",
+      "challenge_event": "EVT-B4-004",
+      "scope": "cross-continuity-type sufficiency"
+    },
+    "relationship": "CLM-B4-B PROPOSED_REVISION_OF CLM-B4-A"
+  },
+  "not_allowed_to_say": [
+    "Claim B is verified.",
+    "Claim A is erased.",
+    "Amadou's acceptance of Claim A proves Claim A.",
+    "One supporting test cancels one challenging test by count.",
+    "The architecture is canonical."
+  ],
+  "next_needed_evidence": [
+    "Direct runtime implementation test.",
+    "Product Designer review of SUPPORTED/UNKNOWN visibility.",
+    "A real loss case for Profit \u2260 Proof in the loss direction.",
+    "Direct source-conflict case before enabling CONFLICTED state."
+  ]
+}
