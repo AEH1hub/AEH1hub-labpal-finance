@@ -1,0 +1,41 @@
+{
+  "research_question_id": "RQ-ASK-001-A",
+  "original_question": "How is the market today?",
+  "question_type": "MARKET_OVERVIEW",
+  "created_at": "2026-07-10T16:00:00Z",
+  "requested_horizon": "NOW",
+  "user_objective_state": "UNKNOWN",
+  "evidence_connection_state": "NOT_CONNECTED",
+  "evidence_mode": "PLAN_ONLY",
+  "action_boundary_state": "RESEARCH_ONLY",
+  "source_requirements": [
+    "Index performance with timestamped source links",
+    "Rates and yields context",
+    "Sector breadth and leadership",
+    "Major news catalysts (dated, sourced)",
+    "Volatility / risk sentiment indicators"
+  ],
+  "evidence_records": [],
+  "source_facts": [],
+  "source_interpretations": [],
+  "labpal_interpretations": [
+    {
+      "claim_id": "LPI-001-A",
+      "claim_text": "LabPal would need timestamped evidence before answering market conditions truthfully.",
+      "claim_classification": "LABPAL_INTERPRETATION",
+      "freshness_state": "UNKNOWN_FRESHNESS"
+    }
+  ],
+  "unknowns": [
+    "Current live market data unavailable",
+    "Source freshness unknown",
+    "No connected evidence adapters active"
+  ],
+  "stale_evidence_warnings": [],
+  "action_boundary_warnings": [],
+  "next_safe_actions": [
+    "List required evidence categories",
+    "Connect evidence adapters in FI-ASK-002",
+    "Preserve as research question"
+  ]
+}

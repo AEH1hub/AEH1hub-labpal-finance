@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://labpal.dev/schemas/finance/research-question-object/v0.1-ask.json",
+  "title": "LabPal Finance Research Question Object v0.1-ASK",
+  "description": "Structured research question with evidence provenance, unknowns, and action boundaries.",
+  "type": "object",
+  "required": [
+    "research_question_id",
+    "original_question",
+    "question_type",
+    "created_at",
+    "requested_horizon",
+    "user_objective_state",
+    "evidence_connection_state",
+    "evidence_mode",
+    "action_boundary_state",
+    "source_requirements",
+    "evidence_records",
+    "source_facts",
+    "source_interpretations",
+    "labpal_interpretations",
+    "unknowns",
+    "stale_evidence_warnings",
+    "action_boundary_warnings",
+    "next_safe_actions"
+  ],
+  "properties": {
+    "research_question_id": { "type": "string" },
+    "original_question": { "type": "string" },
+    "question_type": {
+      "type": "string",
+      "enum": [
+        "MARKET_OVERVIEW",
+        "COMPANY_RESEARCH",
+        "ETF_RESEARCH",
+        "COMPARISON_RESEARCH",
+        "CANDIDATE_DISCOVERY",
+        "ENTRY_ZONE_OR_TIMING",
+        "PORTFOLIO_FIT",
+        "UNKNOWN"
+      ]
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "requested_horizon": { "type": "string" },
+    "user_objective_state": { "type": "string" },
+    "evidence_connection_state": {
+      "type": "string",
+      "enum": [
+        "NOT_CONNECTED",
+        "MOCK_CONNECTED",
+        "CONNECTED_UNTESTED",
+        "CONNECTED_ACTIVE",
+        "FAILED"
+      ]
+    },
+    "evidence_mode": {
+      "type": "string",
+      "enum": [
+        "PLAN_ONLY",
+        "MOCK_EVIDENCE",
+        "LIVE_EVIDENCE_PENDING",
+        "LIVE_EVIDENCE_CONNECTED"
+      ]
+    },
+    "action_boundary_state": {
+      "type": "string",
+      "enum": [
+        "RESEARCH_ONLY",
+        "ACTION_LANGUAGE_DETECTED",
+        "RECOMMENDATION_RISK",
+        "BLOCKED_FOR_REVIEW"
+      ]
+    },
+    "source_requirements": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "evidence_records": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/evidence_record" }
+    },
+    "source_facts": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/claim_entry" }
+    },
+    "source_interpretations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/claim_entry" }
+    },
+    "labpal_interpretations": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/claim_entry" }
+    },
+    "unknowns": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "stale_evidence_warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "action_boundary_warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "next_safe_actions": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "exposure_notes": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "clarification_required": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "$defs": {
+    "evidence_record": {
+      "type": "object",
+      "required": [
+        "evidence_id",
+        "source_name",
+        "source_url",
+        "source_type",
+        "retrieved_at",
+        "published_at",
+        "freshness_state",
+        "asset_or_topic",
+        "claim_text",
+        "claim_classification",
+        "source_quote_or_summary",
+        "labpal_notes",
+        "unknowns",
+        "reliability_notes"
+      ],
+      "properties": {
+        "evidence_id": { "type": "string" },
+        "source_name": { "type": "string" },
+        "source_url": { "type": "string" },
+        "source_type": { "type": "string" },
+        "retrieved_at": { "type": "string" },
+        "published_at": { "type": ["string", "null"] },
+        "freshness_state": { "type": "string" },
+        "asset_or_topic": { "type": "string" },
+        "claim_text": { "type": "string" },
+        "claim_classification": { "type": "string" },
+        "source_quote_or_summary": { "type": "string" },
+        "labpal_notes": { "type": "string" },
+        "unknowns": { "type": "array", "items": { "type": "string" } },
+        "reliability_notes": { "type": "string" },
+        "is_mock": { "type": "boolean" },
+        "mock_label": { "type": ["string", "null"] }
+      },
+      "additionalProperties": false
+    },
+    "claim_entry": {
+      "type": "object",
+      "required": ["claim_id", "claim_text", "claim_classification"],
+      "properties": {
+        "claim_id": { "type": "string" },
+        "claim_text": { "type": "string" },
+        "claim_classification": {
+          "type": "string",
+          "enum": [
+            "SOURCE_FACT",
+            "SOURCE_INTERPRETATION",
+            "LABPAL_INTERPRETATION",
+            "USER_STATEMENT",
+            "UNKNOWN"
+          ]
+        },
+        "evidence_id": { "type": ["string", "null"] },
+        "freshness_state": {
+          "type": "string",
+          "enum": ["CURRENT", "RECENT", "STALE", "UNKNOWN_FRESHNESS"]
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://labpal.dev/schemas/finance/live-evidence-record/v0.1-ask.json",
+  "title": "LabPal Finance Live Evidence Record v0.1-ASK",
+  "description": "A timestamped evidence record from a source. Recording a source does not mean LabPal endorses the claim.",
+  "type": "object",
+  "required": [
+    "evidence_id",
+    "source_name",
+    "source_url",
+    "source_type",
+    "retrieved_at",
+    "published_at",
+    "freshness_state",
+    "asset_or_topic",
+    "claim_text",
+    "claim_classification",
+    "source_quote_or_summary",
+    "labpal_notes",
+    "unknowns",
+    "reliability_notes"
+  ],
+  "properties": {
+    "evidence_id": { "type": "string" },
+    "source_name": { "type": "string" },
+    "source_url": { "type": "string" },
+    "source_type": {
+      "type": "string",
+      "enum": [
+        "MARKET_PRICE",
+        "NEWS",
+        "FILING",
+        "FACTSHEET",
+        "RATES_YIELDS",
+        "SECTOR_BREADTH",
+        "MOCK",
+        "OTHER"
+      ]
+    },
+    "retrieved_at": { "type": "string", "format": "date-time" },
+    "published_at": { "type": ["string", "null"], "format": "date-time" },
+    "freshness_state": {
+      "type": "string",
+      "enum": ["CURRENT", "RECENT", "STALE", "UNKNOWN_FRESHNESS"]
+    },
+    "asset_or_topic": { "type": "string" },
+    "claim_text": { "type": "string" },
+    "claim_classification": {
+      "type": "string",
+      "enum": [
+        "SOURCE_FACT",
+        "SOURCE_INTERPRETATION",
+        "LABPAL_INTERPRETATION",
+        "USER_STATEMENT",
+        "UNKNOWN"
+      ]
+    },
+    "source_quote_or_summary": { "type": "string" },
+    "labpal_notes": { "type": "string" },
+    "unknowns": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "reliability_notes": { "type": "string" },
+    "is_mock": {
+      "type": "boolean",
+      "description": "When true, record is mock evidence and must not be presented as live."
+    },
+    "mock_label": {
+      "type": ["string", "null"],
+      "description": "Required visible label for mock records, e.g. MOCK_EVIDENCE — NOT LIVE DATA"
+    }
+  },
+  "additionalProperties": false
+}
