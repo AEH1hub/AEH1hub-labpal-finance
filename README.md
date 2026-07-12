@@ -421,4 +421,3 @@ NOT STARTED
 LabPal is becoming an operating system for disciplined understanding.
 
 Finance is the first proving domain used to test that operating system against reality.
-
