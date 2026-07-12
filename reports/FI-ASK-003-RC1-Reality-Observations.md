@@ -160,3 +160,25 @@ A subsequent live request for `MSFT` returned:
 The replacement credential functioned successfully without being printed, committed, or included in the provider provenance URL.
 
 This confirms operational credential replacement. It does not establish long-term provider reliability.
+
+## Observation RC1-009 — Additional weekend repetition
+
+Two additional MSFT requests were made on Sunday, 2026-07-12:
+
+- `2026-07-12T15:37:45.978182+00:00`
+- `2026-07-12T15:38:19.992548+00:00`
+
+Both responses preserved:
+
+- latest trading day: `2026-07-10`;
+- provider-reported price: `385.1000`;
+- volume: `24644605`;
+- change: `0.7400`;
+- change percent: `0.1925%`;
+- mock fallback used: false.
+
+### Finding
+
+The provider continued returning consistent weekend evidence across additional repeated calls.
+
+These calls do not qualify as market-hours or after-hours observations because they occurred on Sunday while the US equity market was closed.
