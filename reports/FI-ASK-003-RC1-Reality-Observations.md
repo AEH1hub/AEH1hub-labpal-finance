@@ -182,3 +182,29 @@ Both responses preserved:
 The provider continued returning consistent weekend evidence across additional repeated calls.
 
 These calls do not qualify as market-hours or after-hours observations because they occurred on Sunday while the US equity market was closed.
+
+## Observation RC1-010 — Market-state labeling correction
+
+Two additional requests were saved with filenames containing:
+
+- `weekday-market-hours`;
+- `weekday-after-hours`.
+
+The provider retrieval timestamps were:
+
+- `2026-07-12T15:51:37.958747+00:00`;
+- `2026-07-12T15:52:23.591289+00:00`.
+
+Both occurred on Sunday, 2026-07-12.
+
+### Finding
+
+The requests were genuine provider calls, but their filenames incorrectly described the market state.
+
+They provide additional weekend consistency evidence only. They do not qualify as weekday market-hours or weekday after-hours observations.
+
+The temporary files were renamed to preserve the correction and prevent their filenames from being mistaken for evidence classification.
+
+### Operational lesson
+
+Market state must be derived from the actual date, time and timezone. It must never be inferred from a filename supplied by the operator.
