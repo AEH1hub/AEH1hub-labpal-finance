@@ -133,3 +133,30 @@ Still required:
 LabPal has demonstrated that one real provider can be accessed with a local personal credential and normalized consistently during an initial weekend observation.
 
 FI-ASK-003-RC1 remains active.
+
+## Observation RC1-006 — Replacement credential confirmation
+
+A replacement credential was entered through silent terminal input, written only to the ignored local `.env` file, and reloaded into the shell environment.
+
+Observed checks:
+
+- key present: true;
+- placeholder removed: true;
+- key length: 16;
+- `.env` remained ignored by Git.
+
+A subsequent live request for `MSFT` returned:
+
+- status: `PASS`;
+- retrieval time: `2026-07-12T14:17:47.218229+00:00`;
+- latest trading day: `2026-07-10`;
+- provider-reported price: `385.1000`;
+- source type: `MARKET_PRICE`;
+- classification: `SOURCE_FACT`;
+- mock fallback used: false.
+
+### Finding
+
+The replacement credential functioned successfully without being printed, committed, or included in the provider provenance URL.
+
+This confirms operational credential replacement. It does not establish long-term provider reliability.
