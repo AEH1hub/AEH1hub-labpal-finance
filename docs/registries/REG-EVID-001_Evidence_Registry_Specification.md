@@ -1,6 +1,6 @@
 # REG-EVID-001 — Evidence Registry Specification
 
-**Status:** CANDIDATE — FOUNDATION REVIEW REQUIRED  
+**Status:** CANDIDATE — FOUNDATION REVIEW REQUIRED
 **Depends on:** FI-FOUND-001, FI-FOUND-002, GOV-001, GOV-002
 
 ## Purpose
