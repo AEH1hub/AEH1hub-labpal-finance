@@ -1,6 +1,6 @@
 # GOV-001 — Constitutional Review Authority
 
-**Human-readable title:** Chief Justice  
+**Human-readable title:** Chief Justice
 **Status:** CANDIDATE — GOVERNANCE REVIEW REQUIRED
 
 ## Purpose

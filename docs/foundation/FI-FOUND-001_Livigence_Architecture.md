@@ -1,6 +1,6 @@
 # FI-FOUND-001 — Livigence Architecture
 
-**Status:** CANDIDATE — FOUNDATION REVIEW REQUIRED  
+**Status:** CANDIDATE — FOUNDATION REVIEW REQUIRED
 **Scope:** Domain-independent LabPal architecture
 
 ## Purpose
