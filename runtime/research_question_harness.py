@@ -18,6 +18,17 @@ except ImportError:
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 SCHEMAS = ROOT / "schemas"
 FIXTURES = ROOT / "fixtures" / "research-questions"
+FAILURE_FIXTURES = FIXTURES / "failure-fixtures"
+
+EXPECTED_FAILURE_RULES = {
+    "fail-plan-only-fabricated-market.fixture.json": "RQ-010",
+    "fail-comparison-chooses-winner.fixture.json": "RQ-020",
+    "fail-candidate-discovery-stock-picks.fixture.json": "RQ-030",
+    "fail-entry-zone-price.fixture.json": "RQ-041",
+    "fail-mock-without-label.fixture.json": "RQ-050",
+    "fail-source-fact-in-labpal.fixture.json": "RQ-060",
+    "fail-live-connected.fixture.json": "RQ-052",
+}
 
 BANNED_PATTERNS = [
     (re.compile(r"\b(buy now|sell now|you should buy|you should sell|best stock|top pick|guaranteed)\b", re.I), "RQ-001", "Recommendation language detected."),
@@ -175,6 +186,47 @@ def main():
         sem = semantic_violations(obj)
         semantic_results.append({"file": path.name, "valid": not sem, "violations": sem})
 
+    # Validate intentional failure fixtures.
+    # A failure fixture passes only when its exact expected semantic rule
+    # is observed. Invalid input being accepted is a harness failure.
+    adversarial_results = []
+
+    for path in sorted(FAILURE_FIXTURES.glob("*.fixture.json")):
+        obj = load(path)
+        expected_rule = EXPECTED_FAILURE_RULES.get(path.name)
+
+        schema_errors = [
+            error.message
+            for error in rq_validator.iter_errors(obj)
+        ]
+
+        for rec in obj.get("evidence_records", []):
+            schema_errors.extend(
+                f"evidence.{rec.get('evidence_id')}: {error.message}"
+                for error in live_validator.iter_errors(rec)
+            )
+
+        violations = semantic_violations(obj)
+        observed_rules = sorted({
+            item["rule_id"]
+            for item in violations
+        })
+
+        valid = (
+            expected_rule is not None
+            and observed_rules == [expected_rule]
+        )
+
+        adversarial_results.append({
+            "file": path.name,
+            "expected_rule": expected_rule,
+            "observed_rules": observed_rules,
+            "valid": valid,
+            "schema_valid": not schema_errors,
+            "schema_errors": schema_errors,
+            "violations": violations,
+        })
+
     # Validate mock adapter output shape
     sys.path.insert(0, str(ROOT / "runtime"))
     from evidence_adapter_interface import fetch_mock_evidence, AdapterRequest, MOCK_LABEL  # noqa: E402
@@ -183,12 +235,19 @@ def main():
     sample = fetch_mock_evidence("market_price_adapter", AdapterRequest("SPX"))
     adapter_checks.append({
         "adapter": "market_price_adapter",
-        "valid": all(r.get("is_mock") and MOCK_LABEL in (r.get("mock_label") or "") for r in sample),
+        "valid": all(
+            r.get("is_mock")
+            and r.get("source_type") == "MARKET_PRICE"
+            and MOCK_LABEL in (r.get("mock_label") or "")
+            for r in sample
+        ),
         "mock_label": MOCK_LABEL,
+        "preserved_source_type": "MARKET_PRICE",
     })
 
     status = "PASS" if (
         all(x["valid"] for x in schema_results + semantic_results)
+        and all(x["valid"] for x in adversarial_results)
         and all(x["valid"] for x in adapter_checks)
     ) else "FAIL"
 
@@ -197,6 +256,7 @@ def main():
         "status": status,
         "schema_validation": schema_results,
         "semantic_validation": semantic_results,
+        "adversarial_validation": adversarial_results,
         "adapter_validation": adapter_checks,
     }
     print(json.dumps(output, indent=2))

@@ -18,12 +18,20 @@
     "source_quote_or_summary",
     "labpal_notes",
     "unknowns",
-    "reliability_notes"
+    "reliability_notes",
+    "is_mock",
+    "mock_label"
   ],
   "properties": {
-    "evidence_id": { "type": "string" },
-    "source_name": { "type": "string" },
-    "source_url": { "type": "string" },
+    "evidence_id": {
+      "type": "string"
+    },
+    "source_name": {
+      "type": "string"
+    },
+    "source_url": {
+      "type": "string"
+    },
     "source_type": {
       "type": "string",
       "enum": [
@@ -33,18 +41,35 @@
         "FACTSHEET",
         "RATES_YIELDS",
         "SECTOR_BREADTH",
-        "MOCK",
         "OTHER"
       ]
     },
-    "retrieved_at": { "type": "string", "format": "date-time" },
-    "published_at": { "type": ["string", "null"], "format": "date-time" },
+    "retrieved_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "published_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
     "freshness_state": {
       "type": "string",
-      "enum": ["CURRENT", "RECENT", "STALE", "UNKNOWN_FRESHNESS"]
+      "enum": [
+        "CURRENT",
+        "RECENT",
+        "STALE",
+        "UNKNOWN_FRESHNESS"
+      ]
     },
-    "asset_or_topic": { "type": "string" },
-    "claim_text": { "type": "string" },
+    "asset_or_topic": {
+      "type": "string"
+    },
+    "claim_text": {
+      "type": "string"
+    },
     "claim_classification": {
       "type": "string",
       "enum": [
@@ -55,21 +80,62 @@
         "UNKNOWN"
       ]
     },
-    "source_quote_or_summary": { "type": "string" },
-    "labpal_notes": { "type": "string" },
+    "source_quote_or_summary": {
+      "type": "string"
+    },
+    "labpal_notes": {
+      "type": "string"
+    },
     "unknowns": {
       "type": "array",
-      "items": { "type": "string" }
+      "items": {
+        "type": "string"
+      }
     },
-    "reliability_notes": { "type": "string" },
+    "reliability_notes": {
+      "type": "string"
+    },
     "is_mock": {
       "type": "boolean",
       "description": "When true, record is mock evidence and must not be presented as live."
     },
     "mock_label": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Required visible label for mock records, e.g. MOCK_EVIDENCE — NOT LIVE DATA"
     }
   },
-  "additionalProperties": false
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "is_mock": {
+            "const": true
+          }
+        },
+        "required": [
+          "is_mock"
+        ]
+      },
+      "then": {
+        "properties": {
+          "mock_label": {
+            "type": "string",
+            "minLength": 1,
+            "pattern": "MOCK"
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "mock_label": {
+            "type": "null"
+          }
+        }
+      }
+    }
+  ]
 }

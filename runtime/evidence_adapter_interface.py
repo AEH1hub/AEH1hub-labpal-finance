@@ -70,7 +70,7 @@ class MarketPriceAdapter:
             _mock_record(
                 f"MOCK-PRICE-{request.asset_or_topic}",
                 "Mock Market Price Feed",
-                "MOCK",
+                "MARKET_PRICE",
                 request.asset_or_topic,
                 f"[MOCK] Illustrative price context placeholder for {request.asset_or_topic}",
                 "SOURCE_FACT",
@@ -88,7 +88,7 @@ class NewsAdapter:
             _mock_record(
                 f"MOCK-NEWS-{request.asset_or_topic}",
                 "Mock News Feed",
-                "MOCK",
+                "NEWS",
                 request.asset_or_topic,
                 f"[MOCK] Illustrative news headline placeholder for {request.asset_or_topic}",
                 "SOURCE_INTERPRETATION",
@@ -106,7 +106,7 @@ class FilingsOrFactsheetAdapter:
             _mock_record(
                 f"MOCK-FILING-{request.asset_or_topic}",
                 "Mock Filings / Factsheet",
-                "MOCK",
+                "FILING",
                 request.asset_or_topic,
                 f"[MOCK] Illustrative filing/factsheet reference for {request.asset_or_topic}",
                 "SOURCE_FACT",
@@ -124,7 +124,7 @@ class RatesYieldsAdapter:
             _mock_record(
                 "MOCK-RATES",
                 "Mock Rates / Yields Feed",
-                "MOCK",
+                "RATES_YIELDS",
                 "RATES",
                 "[MOCK] Illustrative rates/yields context placeholder",
                 "SOURCE_FACT",
@@ -142,7 +142,7 @@ class SectorBreadthAdapter:
             _mock_record(
                 "MOCK-BREADTH",
                 "Mock Sector Breadth Feed",
-                "MOCK",
+                "SECTOR_BREADTH",
                 "MARKET",
                 "[MOCK] Illustrative sector breadth placeholder",
                 "SOURCE_INTERPRETATION",

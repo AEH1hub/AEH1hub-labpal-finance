@@ -1,5 +1,5 @@
 {
-  "research_question_id": "RQ-ASK-001-C",
+  "research_question_id": "RQ-FAIL-050",
   "original_question": "Which stocks are worth researching for the next 6 months?",
   "question_type": "CANDIDATE_DISCOVERY",
   "created_at": "2026-07-10T16:00:00Z",
@@ -29,13 +29,13 @@
       "claim_text": "[MOCK] Illustrative research-criteria checklist — not a stock pick list",
       "claim_classification": "LABPAL_INTERPRETATION",
       "source_quote_or_summary": "Mock criteria template only.",
-      "labpal_notes": "MOCK_EVIDENCE — NOT LIVE DATA",
+      "labpal_notes": "Simulation label intentionally omitted.",
       "unknowns": [
         "No live screening feed connected"
       ],
       "reliability_notes": "Prototype mock — do not use for market decisions.",
       "is_mock": true,
-      "mock_label": "MOCK_EVIDENCE — NOT LIVE DATA"
+      "mock_label": ""
     }
   ],
   "source_facts": [],
