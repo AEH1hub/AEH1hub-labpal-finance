@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import os
 from copy import deepcopy
 
 from runtime.alpha_vantage_market_price_adapter import (
@@ -81,25 +82,31 @@ def expect_failure(
 
 
 def run_missing_api_key_case() -> dict:
+    original_key = os.environ.pop("ALPHA_VANTAGE_API_KEY", None)
+
     try:
-        fetch_live_evidence("IBM", api_key="")
-    except ProviderError as exc:
-        observed = str(exc)
+        try:
+            fetch_live_evidence("IBM", api_key="")
+        except ProviderError as exc:
+            observed = str(exc)
+            return {
+                "case": "missing_api_key",
+                "valid": "ALPHA_VANTAGE_API_KEY is missing" in observed,
+                "expected_error": "ALPHA_VANTAGE_API_KEY is missing",
+                "observed_error": observed,
+                "mock_fallback_used": False,
+            }
+
         return {
             "case": "missing_api_key",
-            "valid": "ALPHA_VANTAGE_API_KEY is missing" in observed,
+            "valid": False,
             "expected_error": "ALPHA_VANTAGE_API_KEY is missing",
-            "observed_error": observed,
+            "observed_error": None,
             "mock_fallback_used": False,
         }
-
-    return {
-        "case": "missing_api_key",
-        "valid": False,
-        "expected_error": "ALPHA_VANTAGE_API_KEY is missing",
-        "observed_error": None,
-        "mock_fallback_used": False,
-    }
+    finally:
+        if original_key is not None:
+            os.environ["ALPHA_VANTAGE_API_KEY"] = original_key
 
 
 def run_provider_envelope_case(
