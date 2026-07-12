@@ -1,8 +1,8 @@
 # FI-ASK-003-RC1 — Reality Confirmation Observations
 
-**Status:** ACTIVE — PARTIAL EVIDENCE  
-**Provider:** Alpha Vantage  
-**Observation date:** 2026-07-12  
+**Status:** ACTIVE — PARTIAL EVIDENCE
+**Provider:** Alpha Vantage
+**Observation date:** 2026-07-12
 **Evidence type:** Founder-operated live-provider observation
 
 ## Purpose

@@ -1,7 +1,7 @@
 # FI-FUNDING-001 — Pre-Seed Funding and Valuation Context
 
-**Status:** PRESERVED CANDIDATE CONTEXT — NOT VERIFIED  
-**Decision status:** NOT ADOPTED  
+**Status:** PRESERVED CANDIDATE CONTEXT — NOT VERIFIED
+**Decision status:** NOT ADOPTED
 **Purpose:** Preserve a strategic discussion for later research.
 
 ## Current company-stage interpretation
