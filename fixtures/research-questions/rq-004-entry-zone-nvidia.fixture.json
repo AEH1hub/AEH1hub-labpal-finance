@@ -1,0 +1,42 @@
+{
+  "research_question_id": "RQ-ASK-001-D",
+  "original_question": "What is a good entry zone for Nvidia?",
+  "question_type": "ENTRY_ZONE_OR_TIMING",
+  "created_at": "2026-07-10T16:00:00Z",
+  "requested_horizon": "NOW",
+  "user_objective_state": "UNKNOWN",
+  "evidence_connection_state": "NOT_CONNECTED",
+  "evidence_mode": "PLAN_ONLY",
+  "action_boundary_state": "BLOCKED_FOR_REVIEW",
+  "source_requirements": [
+    "Defined risk boundary before timing language",
+    "Sourced price/volatility context with timestamps",
+    "Invalidation level tied to thesis",
+    "Review trigger for reopening the question"
+  ],
+  "evidence_records": [],
+  "source_facts": [],
+  "source_interpretations": [],
+  "labpal_interpretations": [
+    {
+      "claim_id": "LPI-001-D1",
+      "claim_text": "Entry-zone generation is future gated and not provided in this MVP.",
+      "claim_classification": "LABPAL_INTERPRETATION",
+      "freshness_state": "UNKNOWN_FRESHNESS"
+    }
+  ],
+  "unknowns": [
+    "No price level may be stated without sourced evidence and review",
+    "Risk boundary unknown",
+    "Live price feed not connected"
+  ],
+  "stale_evidence_warnings": [],
+  "action_boundary_warnings": [
+    "Entry-zone request blocked for review. No price level output permitted."
+  ],
+  "next_safe_actions": [
+    "Reframe as research question",
+    "Define risk boundary and invalidation",
+    "Wait for FI-ASK-002 evidence adapters"
+  ]
+}
