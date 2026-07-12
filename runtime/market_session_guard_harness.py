@@ -38,7 +38,7 @@ CASES = [
     ),
     (
         "closed",
-        datetime(2026, 7, 13, 2, 0, tzinfo=UTC),
+        datetime(2026, 7, 13, 7, 0, tzinfo=UTC),
         "CLOSED",
     ),
 ]
