@@ -166,16 +166,15 @@ def capabilities() -> dict[str, Any]:
         "version": API_VERSION,
         "earned": [
             {
-                "capability": "FI-REAS-001_UNIFIED_REASONING_PIPELINE",
+                "capability": (
+                    "FI-REAS-001_UNIFIED_REASONING_PIPELINE"
+                ),
                 "state": "MERGED",
             },
             {
                 "capability": "LU-001_PLATFORM_SPECIFICATION",
                 "state": "SPECIFICATION_COMPLETE",
             },
-        ],
-        "in_progress": [],
-        "earned": [
             {
                 "capability": "LU-001_UNDERSTANDING_PLATFORM",
                 "state": "MERGED",
@@ -185,11 +184,8 @@ def capabilities() -> dict[str, Any]:
                 "repository_state": "MERGED",
                 "external_proof": "NOT_EARNED",
             },
-            {
-                "capability": "LU-001_PLATFORM_SPECIFICATION",
-                "state": "SPECIFICATION_COMPLETE",
-            },
         ],
+        "in_progress": [],
         "not_earned": [
             "LU-001_EXTERNALLY_PROVEN",
             "AUTHENTICATION",
