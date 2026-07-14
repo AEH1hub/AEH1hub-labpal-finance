@@ -1,0 +1,88 @@
+{
+  "execution_id": "REAS-EXEC-001",
+  "executing_actor": "FI-REAS-001-HARNESS",
+  "scope": {
+    "domain": "FINANCE",
+    "purpose": "Validate one deterministic research-only reasoning cycle",
+    "asset_or_topic": "IBM",
+    "verification_scope": "STRUCTURE_AND_REASONING_ONLY"
+  },
+  "research_question": {
+    "research_question_id": "RQ-REAS-001",
+    "original_question": "What does this preserved IBM evidence demonstrate within the current research scope?",
+    "question_type": "COMPANY_RESEARCH",
+    "created_at": "2026-07-13T12:00:00Z",
+    "requested_horizon": "CURRENT_RESEARCH_SCOPE",
+    "user_objective_state": "RESEARCH_ONLY",
+    "evidence_connection_state": "MOCK_CONNECTED",
+    "evidence_mode": "MOCK_EVIDENCE",
+    "action_boundary_state": "RESEARCH_ONLY",
+    "source_requirements": [
+      "A genuine live provider observation is required before making claims about current market reality",
+      "Independent evidence is required before broader verification"
+    ],
+    "evidence_records": [
+      {
+        "evidence_id": "MOCK-REAS-EVID-001",
+        "source_name": "FI-REAS-001 deterministic fixture",
+        "source_url": "https://example.invalid/fi-reas-001",
+        "source_type": "MARKET_PRICE",
+        "retrieved_at": "2026-07-13T12:00:00Z",
+        "published_at": null,
+        "freshness_state": "UNKNOWN_FRESHNESS",
+        "asset_or_topic": "IBM",
+        "claim_text": "The fixture preserves a normalized IBM market-price evidence structure.",
+        "claim_classification": "SOURCE_FACT",
+        "source_quote_or_summary": "Deterministic mock record used only to validate the reasoning pipeline.",
+        "labpal_notes": "This record does not describe current external market reality.",
+        "unknowns": [
+          "Current live IBM price remains unknown",
+          "Independent provider agreement remains unknown"
+        ],
+        "reliability_notes": "Suitable for deterministic structure validation only.",
+        "is_mock": true,
+        "mock_label": "MOCK_EVIDENCE — NOT LIVE DATA"
+      }
+    ],
+    "source_facts": [
+      {
+        "claim_id": "SF-REAS-001",
+        "claim_text": "The evidence record is explicitly marked as mock evidence.",
+        "claim_classification": "SOURCE_FACT",
+        "freshness_state": "CURRENT"
+      }
+    ],
+    "source_interpretations": [],
+    "labpal_interpretations": [
+      {
+        "claim_id": "LPI-REAS-001",
+        "claim_text": "The preserved fixture is sufficient to test pipeline structure, but insufficient to establish current IBM market conditions.",
+        "claim_classification": "LABPAL_INTERPRETATION",
+        "freshness_state": "CURRENT"
+      }
+    ],
+    "unknowns": [
+      "Current live IBM market conditions are not established",
+      "No independent provider comparison has been performed"
+    ],
+    "stale_evidence_warnings": [],
+    "action_boundary_warnings": [
+      "Research-only scope: no recommendation or execution conclusion is permitted."
+    ],
+    "next_safe_actions": [
+      "Collect genuine live evidence in an authorized workflow",
+      "Preserve a second independent provider before broader comparison"
+    ]
+  },
+  "challenging_evidence_ids": [],
+  "contradictions": [],
+  "additional_unknowns": [
+    "External validity has not been demonstrated by this fixture"
+  ],
+  "excluded_evidence": [],
+  "previous_understanding": null,
+  "next_evidence_needed": [
+    "Genuine live provider evidence",
+    "Independent provider evidence"
+  ]
+}
