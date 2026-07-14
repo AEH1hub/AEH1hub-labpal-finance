@@ -1,0 +1,117 @@
+{
+  "execution_id": "REAS-EXEC-003",
+  "executing_actor": "FI-REAS-001-HARNESS",
+  "scope": {
+    "domain": "FINANCE",
+    "purpose": "Verify that supporting and challenging evidence remain visible",
+    "asset_or_topic": "IBM",
+    "verification_scope": "CHALLENGED_UNDERSTANDING"
+  },
+  "research_question": {
+    "research_question_id": "RQ-REAS-003",
+    "original_question": "Does the available evidence support the current IBM interpretation?",
+    "question_type": "COMPANY_RESEARCH",
+    "created_at": "2026-07-13T13:00:00Z",
+    "requested_horizon": "CURRENT_RESEARCH_SCOPE",
+    "user_objective_state": "RESEARCH_ONLY",
+    "evidence_connection_state": "MOCK_CONNECTED",
+    "evidence_mode": "MOCK_EVIDENCE",
+    "action_boundary_state": "RESEARCH_ONLY",
+    "source_requirements": [
+      "Independent evidence supporting the interpretation",
+      "Independent evidence challenging the interpretation",
+      "Current live evidence before any external conclusion"
+    ],
+    "evidence_records": [
+      {
+        "evidence_id": "MOCK-REAS-SUPPORT-001",
+        "source_name": "FI-REAS-001 support fixture",
+        "source_url": "https://example.invalid/support",
+        "source_type": "OTHER",
+        "retrieved_at": "2026-07-13T13:00:00Z",
+        "published_at": null,
+        "freshness_state": "UNKNOWN_FRESHNESS",
+        "asset_or_topic": "IBM",
+        "claim_text": "One preserved mock source supports the existing scoped interpretation.",
+        "claim_classification": "SOURCE_INTERPRETATION",
+        "source_quote_or_summary": "Mock supporting interpretation for deterministic testing.",
+        "labpal_notes": "This record validates challenge preservation only.",
+        "unknowns": [
+          "External validity remains unknown"
+        ],
+        "reliability_notes": "Deterministic mock evidence only.",
+        "is_mock": true,
+        "mock_label": "MOCK_EVIDENCE — NOT LIVE DATA"
+      },
+      {
+        "evidence_id": "MOCK-REAS-CHALLENGE-001",
+        "source_name": "FI-REAS-001 challenge fixture",
+        "source_url": "https://example.invalid/challenge",
+        "source_type": "OTHER",
+        "retrieved_at": "2026-07-13T13:01:00Z",
+        "published_at": null,
+        "freshness_state": "UNKNOWN_FRESHNESS",
+        "asset_or_topic": "IBM",
+        "claim_text": "A second preserved mock source challenges the existing scoped interpretation.",
+        "claim_classification": "SOURCE_INTERPRETATION",
+        "source_quote_or_summary": "Mock challenging interpretation for deterministic testing.",
+        "labpal_notes": "This record must remain visible beside supporting evidence.",
+        "unknowns": [
+          "The contradiction is unresolved"
+        ],
+        "reliability_notes": "Deterministic mock evidence only.",
+        "is_mock": true,
+        "mock_label": "MOCK_EVIDENCE — NOT LIVE DATA"
+      }
+    ],
+    "source_facts": [],
+    "source_interpretations": [
+      {
+        "claim_id": "SI-REAS-003-A",
+        "claim_text": "The preserved evidence contains materially different interpretations.",
+        "claim_classification": "SOURCE_INTERPRETATION",
+        "freshness_state": "CURRENT"
+      }
+    ],
+    "labpal_interpretations": [
+      {
+        "claim_id": "LPI-REAS-003",
+        "claim_text": "The prior interpretation requires review because materially challenging evidence remains unresolved.",
+        "claim_classification": "LABPAL_INTERPRETATION",
+        "freshness_state": "CURRENT"
+      }
+    ],
+    "unknowns": [
+      "Which interpretation better reflects external reality is unknown",
+      "No live independent verification has been performed"
+    ],
+    "stale_evidence_warnings": [],
+    "action_boundary_warnings": [
+      "Research-only scope: no recommendation is permitted."
+    ],
+    "next_safe_actions": [
+      "Collect independent evidence",
+      "Review both interpretations",
+      "Preserve the reason for any revision"
+    ]
+  },
+  "challenging_evidence_ids": [
+    "MOCK-REAS-CHALLENGE-001"
+  ],
+  "contradictions": [
+    "Supporting and challenging evidence produce materially different interpretations"
+  ],
+  "additional_unknowns": [
+    "The contradiction has not been resolved within scope"
+  ],
+  "excluded_evidence": [],
+  "previous_understanding": {
+    "status": "WORKING_INTERPRETATION",
+    "current_statement": "The earlier scoped interpretation remained provisionally usable before the challenge appeared.",
+    "selected_claim_id": "LPI-REAS-PRIOR-001",
+    "history_preserved": true
+  },
+  "next_evidence_needed": [
+    "Independent evidence capable of testing both interpretations"
+  ]
+}

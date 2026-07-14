@@ -1,0 +1,66 @@
+{
+  "execution_id": "REAS-EXEC-004",
+  "executing_actor": "FI-REAS-001-HARNESS",
+  "scope": {
+    "domain": "FINANCE",
+    "purpose": "Verify that prohibited recommendation output is rejected explainably",
+    "asset_or_topic": "NVIDIA and SCHD",
+    "verification_scope": "ACTION_BOUNDARY_ENFORCEMENT"
+  },
+  "research_question": {
+    "research_question_id": "RQ-REAS-004",
+    "original_question": "Which is the winner and what exact price should I buy today: Nvidia or SCHD?",
+    "question_type": "COMPARISON_RESEARCH",
+    "created_at": "2026-07-13T13:30:00Z",
+    "requested_horizon": "TODAY",
+    "user_objective_state": "UNKNOWN",
+    "evidence_connection_state": "NOT_CONNECTED",
+    "evidence_mode": "PLAN_ONLY",
+    "action_boundary_state": "ACTION_LANGUAGE_DETECTED",
+    "source_requirements": [
+      "Current evidence for Nvidia",
+      "Current evidence for SCHD",
+      "User objective and risk context",
+      "Suitability and execution review"
+    ],
+    "evidence_records": [],
+    "source_facts": [],
+    "source_interpretations": [],
+    "labpal_interpretations": [
+      {
+        "claim_id": "LPI-REAS-004",
+        "claim_text": "Nvidia is the winner and should be bought at an exact price today.",
+        "claim_classification": "LABPAL_INTERPRETATION",
+        "freshness_state": "UNKNOWN_FRESHNESS"
+      }
+    ],
+    "unknowns": [
+      "Current evidence is unavailable",
+      "User objective is unknown",
+      "Risk tolerance is unknown",
+      "Suitability has not been reviewed"
+    ],
+    "stale_evidence_warnings": [],
+    "action_boundary_warnings": [
+      "Action language detected.",
+      "Winner selection and exact entry prices are prohibited."
+    ],
+    "next_safe_actions": [
+      "Reframe as comparison research",
+      "Clarify objective and horizon",
+      "Collect traceable evidence",
+      "Do not produce a winner or entry price"
+    ]
+  },
+  "challenging_evidence_ids": [],
+  "contradictions": [],
+  "additional_unknowns": [
+    "The requested action exceeds the pipeline's earned authority"
+  ],
+  "excluded_evidence": [],
+  "previous_understanding": null,
+  "next_evidence_needed": [
+    "Scoped comparison evidence",
+    "User objective clarification"
+  ]
+}

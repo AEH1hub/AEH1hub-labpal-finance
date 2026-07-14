@@ -1,0 +1,58 @@
+{
+  "execution_id": "REAS-EXEC-002",
+  "executing_actor": "FI-REAS-001-HARNESS",
+  "scope": {
+    "domain": "FINANCE",
+    "purpose": "Verify that the pipeline preserves missing evidence without invention",
+    "asset_or_topic": "NVIDIA",
+    "verification_scope": "INSUFFICIENT_EVIDENCE_HANDLING"
+  },
+  "research_question": {
+    "research_question_id": "RQ-REAS-002",
+    "original_question": "What can currently be concluded about Nvidia from the available evidence?",
+    "question_type": "COMPANY_RESEARCH",
+    "created_at": "2026-07-13T12:30:00Z",
+    "requested_horizon": "CURRENT_RESEARCH_SCOPE",
+    "user_objective_state": "RESEARCH_ONLY",
+    "evidence_connection_state": "NOT_CONNECTED",
+    "evidence_mode": "PLAN_ONLY",
+    "action_boundary_state": "RESEARCH_ONLY",
+    "source_requirements": [
+      "Current company filing or factsheet evidence",
+      "Current market-price evidence",
+      "Recent company-specific evidence",
+      "Independent source comparison"
+    ],
+    "evidence_records": [],
+    "source_facts": [],
+    "source_interpretations": [],
+    "labpal_interpretations": [],
+    "unknowns": [
+      "No current evidence records are connected",
+      "Current Nvidia market conditions are unknown",
+      "Current company performance is unknown",
+      "Independent evidence agreement is unknown"
+    ],
+    "stale_evidence_warnings": [],
+    "action_boundary_warnings": [
+      "Research-only scope: no recommendation or execution conclusion is permitted."
+    ],
+    "next_safe_actions": [
+      "Collect current evidence",
+      "Validate provenance and freshness",
+      "Preserve supporting and challenging sources",
+      "Re-run the reasoning pipeline after evidence is connected"
+    ]
+  },
+  "challenging_evidence_ids": [],
+  "contradictions": [],
+  "additional_unknowns": [
+    "No externally validated claim can be made from the current input"
+  ],
+  "excluded_evidence": [],
+  "previous_understanding": null,
+  "next_evidence_needed": [
+    "Current Nvidia evidence",
+    "Independent provider or source evidence"
+  ]
+}
