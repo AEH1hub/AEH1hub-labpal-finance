@@ -89,6 +89,12 @@ async def main() -> int:
             for item in capabilities_body["earned"]
         }
 
+        expected_earned = {
+            "FI-REAS-001_UNIFIED_REASONING_PIPELINE",
+            "LU-001_PLATFORM_SPECIFICATION",
+            "LU-001_UNDERSTANDING_PLATFORM",
+        }
+
         lu001_capability = earned_capabilities.get(
             "LU-001_UNDERSTANDING_PLATFORM",
             {},
@@ -99,6 +105,13 @@ async def main() -> int:
             "valid": (
                 capabilities.status_code == 200
                 and capabilities_body["version"] == "v1"
+                and set(earned_capabilities) == expected_earned
+                and earned_capabilities[
+                    "FI-REAS-001_UNIFIED_REASONING_PIPELINE"
+                ]["state"] == "MERGED"
+                and earned_capabilities[
+                    "LU-001_PLATFORM_SPECIFICATION"
+                ]["state"] == "SPECIFICATION_COMPLETE"
                 and capabilities_body["in_progress"] == []
                 and lu001_capability.get("state") == "MERGED"
                 and lu001_capability.get("repository_state")
