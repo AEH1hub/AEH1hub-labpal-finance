@@ -174,16 +174,23 @@ def capabilities() -> dict[str, Any]:
                 "state": "SPECIFICATION_COMPLETE",
             },
         ],
-        "in_progress": [
+        "in_progress": [],
+        "earned": [
             {
-                "capability": "LU-001_PLATFORM_RUNTIME",
-                "state": "RUNTIME_DEMONSTRATED",
-                "evidence_scope": "LOCAL_DETERMINISTIC_RUNTIME",
-                "repository_state": "NOT_MERGED",
-            }
+                "capability": "LU-001_UNDERSTANDING_PLATFORM",
+                "state": "MERGED",
+                "evidence_scope": (
+                    "DETERMINISTIC_REPOSITORY_VERIFICATION"
+                ),
+                "repository_state": "MERGED",
+                "external_proof": "NOT_EARNED",
+            },
+            {
+                "capability": "LU-001_PLATFORM_SPECIFICATION",
+                "state": "SPECIFICATION_COMPLETE",
+            },
         ],
         "not_earned": [
-            "LU-001_MERGED",
             "LU-001_EXTERNALLY_PROVEN",
             "AUTHENTICATION",
             "PERSISTENCE",

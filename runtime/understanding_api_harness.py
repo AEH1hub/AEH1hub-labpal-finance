@@ -84,13 +84,31 @@ async def main() -> int:
         )
         capabilities_body = capabilities.json()
 
+        earned_capabilities = {
+            item["capability"]: item
+            for item in capabilities_body["earned"]
+        }
+
+        lu001_capability = earned_capabilities.get(
+            "LU-001_UNDERSTANDING_PLATFORM",
+            {},
+        )
+
         cases.append({
             "case": "capabilities",
             "valid": (
                 capabilities.status_code == 200
                 and capabilities_body["version"] == "v1"
+                and capabilities_body["in_progress"] == []
+                and lu001_capability.get("state") == "MERGED"
+                and lu001_capability.get("repository_state")
+                == "MERGED"
+                and lu001_capability.get("external_proof")
+                == "NOT_EARNED"
                 and "LU-001_EXTERNALLY_PROVEN"
                 in capabilities_body["not_earned"]
+                and "LU-001_MERGED"
+                not in capabilities_body["not_earned"]
             ),
         })
 
