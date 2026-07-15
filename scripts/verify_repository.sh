@@ -74,6 +74,10 @@ done < <(
 echo "Result: PASS"
 
 run_gate \
+  "LU-UX-001 Understanding Experience harness" \
+  "$PYTHON_BIN" -m runtime.understanding_experience_harness
+
+run_gate \
   "LU-001 Understanding Platform harness" \
   "$PYTHON_BIN" -m runtime.understanding_api_harness
 
