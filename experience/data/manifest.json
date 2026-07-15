@@ -1,0 +1,36 @@
+{
+  "milestone": "LU-UX-001",
+  "label": "DETERMINISTIC_REASONING_OUTPUTS_NOT_LIVE_EVIDENCE",
+  "reasoning_dependency": "FI-REAS-001",
+  "platform_dependency": "LU-001",
+  "scenarios": [
+    {
+      "scenario_id": "valid-research-cycle",
+      "filename": "valid-research-cycle.json",
+      "decision_state": "READY_FOR_REVIEW",
+      "review_state": "READY_FOR_REVIEW",
+      "validation_valid": true
+    },
+    {
+      "scenario_id": "insufficient-evidence",
+      "filename": "insufficient-evidence.json",
+      "decision_state": "INSUFFICIENT_EVIDENCE",
+      "review_state": "REVISION_REQUIRED",
+      "validation_valid": true
+    },
+    {
+      "scenario_id": "challenged-understanding",
+      "filename": "challenged-understanding.json",
+      "decision_state": "REVISION_REQUIRED",
+      "review_state": "REVISION_REQUIRED",
+      "validation_valid": true
+    },
+    {
+      "scenario_id": "prohibited-recommendation",
+      "filename": "prohibited-recommendation.json",
+      "decision_state": "REVISION_REQUIRED",
+      "review_state": "REVISION_REQUIRED",
+      "validation_valid": false
+    }
+  ]
+}

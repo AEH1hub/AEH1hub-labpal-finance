@@ -1,0 +1,76 @@
+{
+  "experience_metadata": {
+    "scenario_id": "insufficient-evidence",
+    "fixture": "insufficient-evidence.fixture.json",
+    "evidence_label": "DETERMINISTIC_FIXTURE_NOT_LIVE_EVIDENCE",
+    "reasoning_milestone": "FI-REAS-001",
+    "history_preserved": true
+  },
+  "result": {
+    "milestone": "FI-REAS-001",
+    "execution_id": "REAS-EXEC-002",
+    "executing_actor": "FI-REAS-001-HARNESS",
+    "scope": {
+      "domain": "FINANCE",
+      "purpose": "Verify that the pipeline preserves missing evidence without invention",
+      "asset_or_topic": "NVIDIA",
+      "verification_scope": "INSUFFICIENT_EVIDENCE_HANDLING"
+    },
+    "preserved_question": {
+      "research_question_id": "RQ-REAS-002",
+      "original_question": "What can currently be concluded about Nvidia from the available evidence?",
+      "question_type": "COMPANY_RESEARCH",
+      "action_boundary_state": "RESEARCH_ONLY",
+      "evidence_mode": "PLAN_ONLY"
+    },
+    "evidence_considered": [],
+    "supporting_evidence": [],
+    "challenging_evidence": [],
+    "excluded_evidence": [],
+    "unknowns": [
+      "No current evidence records are connected",
+      "Current Nvidia market conditions are unknown",
+      "Current company performance is unknown",
+      "Independent evidence agreement is unknown",
+      "No externally validated claim can be made from the current input"
+    ],
+    "contradictions": [],
+    "claims": [],
+    "current_understanding": {
+      "status": "WORKING_INTERPRETATION",
+      "current_statement": "No sufficiently supported current interpretation is available.",
+      "selected_claim_id": null,
+      "supporting_evidence_ids": [],
+      "challenging_evidence_ids": [],
+      "material_unknowns": [
+        "No current evidence records are connected",
+        "Current Nvidia market conditions are unknown",
+        "Current company performance is unknown",
+        "Independent evidence agreement is unknown",
+        "No externally validated claim can be made from the current input"
+      ],
+      "contradictions": [],
+      "previous_understanding": null,
+      "verification_notice": "Selection does not equal verification.",
+      "history_preserved": true
+    },
+    "decision_state": "INSUFFICIENT_EVIDENCE",
+    "review_state": "REVISION_REQUIRED",
+    "reasoning_summary": "LabPal preserved the original question, considered 0 evidence record(s), preserved 5 unknown(s), 0 contradiction(s), and derived the bounded decision state INSUFFICIENT_EVIDENCE. Selection does not equal verification.",
+    "next_evidence_needed": [
+      "Current company filing or factsheet evidence",
+      "Current market-price evidence",
+      "Recent company-specific evidence",
+      "Independent source comparison",
+      "Current Nvidia evidence",
+      "Independent provider or source evidence"
+    ],
+    "history_preserved": true,
+    "validation_results": {
+      "valid": true,
+      "research_question_schema_errors": [],
+      "research_question_semantic_violations": [],
+      "evidence_validation_errors": []
+    }
+  }
+}

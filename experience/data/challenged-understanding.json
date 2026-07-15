@@ -1,0 +1,125 @@
+{
+  "experience_metadata": {
+    "scenario_id": "challenged-understanding",
+    "fixture": "challenged-understanding.fixture.json",
+    "evidence_label": "DETERMINISTIC_FIXTURE_NOT_LIVE_EVIDENCE",
+    "reasoning_milestone": "FI-REAS-001",
+    "history_preserved": true
+  },
+  "result": {
+    "milestone": "FI-REAS-001",
+    "execution_id": "REAS-EXEC-003",
+    "executing_actor": "FI-REAS-001-HARNESS",
+    "scope": {
+      "domain": "FINANCE",
+      "purpose": "Verify that supporting and challenging evidence remain visible",
+      "asset_or_topic": "IBM",
+      "verification_scope": "CHALLENGED_UNDERSTANDING"
+    },
+    "preserved_question": {
+      "research_question_id": "RQ-REAS-003",
+      "original_question": "Does the available evidence support the current IBM interpretation?",
+      "question_type": "COMPANY_RESEARCH",
+      "action_boundary_state": "RESEARCH_ONLY",
+      "evidence_mode": "MOCK_EVIDENCE"
+    },
+    "evidence_considered": [
+      "MOCK-REAS-SUPPORT-001",
+      "MOCK-REAS-CHALLENGE-001"
+    ],
+    "supporting_evidence": [
+      "MOCK-REAS-SUPPORT-001"
+    ],
+    "challenging_evidence": [
+      "MOCK-REAS-CHALLENGE-001"
+    ],
+    "excluded_evidence": [],
+    "unknowns": [
+      "Which interpretation better reflects external reality is unknown",
+      "No live independent verification has been performed",
+      "External validity remains unknown",
+      "The contradiction is unresolved",
+      "The contradiction has not been resolved within scope"
+    ],
+    "contradictions": [
+      "Supporting and challenging evidence produce materially different interpretations"
+    ],
+    "claims": [
+      {
+        "claim_id": "SI-REAS-003-A",
+        "claim_text": "The preserved evidence contains materially different interpretations.",
+        "claim_classification": "SOURCE_INTERPRETATION",
+        "freshness_state": "CURRENT",
+        "origin_collection": "source_interpretations"
+      },
+      {
+        "claim_id": "LPI-REAS-003",
+        "claim_text": "The prior interpretation requires review because materially challenging evidence remains unresolved.",
+        "claim_classification": "LABPAL_INTERPRETATION",
+        "freshness_state": "CURRENT",
+        "origin_collection": "labpal_interpretations"
+      },
+      {
+        "claim_id": "CLAIM-FROM-MOCK-REAS-SUPPORT-001",
+        "claim_text": "One preserved mock source supports the existing scoped interpretation.",
+        "claim_classification": "SOURCE_INTERPRETATION",
+        "freshness_state": "UNKNOWN_FRESHNESS",
+        "evidence_id": "MOCK-REAS-SUPPORT-001",
+        "origin_collection": "evidence_records"
+      },
+      {
+        "claim_id": "CLAIM-FROM-MOCK-REAS-CHALLENGE-001",
+        "claim_text": "A second preserved mock source challenges the existing scoped interpretation.",
+        "claim_classification": "SOURCE_INTERPRETATION",
+        "freshness_state": "UNKNOWN_FRESHNESS",
+        "evidence_id": "MOCK-REAS-CHALLENGE-001",
+        "origin_collection": "evidence_records"
+      }
+    ],
+    "current_understanding": {
+      "status": "WORKING_INTERPRETATION",
+      "current_statement": "The prior interpretation requires review because materially challenging evidence remains unresolved.",
+      "selected_claim_id": "LPI-REAS-003",
+      "supporting_evidence_ids": [
+        "MOCK-REAS-SUPPORT-001"
+      ],
+      "challenging_evidence_ids": [
+        "MOCK-REAS-CHALLENGE-001"
+      ],
+      "material_unknowns": [
+        "Which interpretation better reflects external reality is unknown",
+        "No live independent verification has been performed",
+        "External validity remains unknown",
+        "The contradiction is unresolved",
+        "The contradiction has not been resolved within scope"
+      ],
+      "contradictions": [
+        "Supporting and challenging evidence produce materially different interpretations"
+      ],
+      "previous_understanding": {
+        "status": "WORKING_INTERPRETATION",
+        "current_statement": "The earlier scoped interpretation remained provisionally usable before the challenge appeared.",
+        "selected_claim_id": "LPI-REAS-PRIOR-001",
+        "history_preserved": true
+      },
+      "verification_notice": "Selection does not equal verification.",
+      "history_preserved": true
+    },
+    "decision_state": "REVISION_REQUIRED",
+    "review_state": "REVISION_REQUIRED",
+    "reasoning_summary": "LabPal preserved the original question, considered 2 evidence record(s), preserved 5 unknown(s), 1 contradiction(s), and derived the bounded decision state REVISION_REQUIRED. Selection does not equal verification.",
+    "next_evidence_needed": [
+      "Independent evidence supporting the interpretation",
+      "Independent evidence challenging the interpretation",
+      "Current live evidence before any external conclusion",
+      "Independent evidence capable of testing both interpretations"
+    ],
+    "history_preserved": true,
+    "validation_results": {
+      "valid": true,
+      "research_question_schema_errors": [],
+      "research_question_semantic_violations": [],
+      "evidence_validation_errors": []
+    }
+  }
+}
