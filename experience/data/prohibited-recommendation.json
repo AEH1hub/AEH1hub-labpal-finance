@@ -1,0 +1,89 @@
+{
+  "experience_metadata": {
+    "scenario_id": "prohibited-recommendation",
+    "fixture": "prohibited-recommendation.fixture.json",
+    "evidence_label": "DETERMINISTIC_FIXTURE_NOT_LIVE_EVIDENCE",
+    "reasoning_milestone": "FI-REAS-001",
+    "history_preserved": true
+  },
+  "result": {
+    "milestone": "FI-REAS-001",
+    "execution_id": "REAS-EXEC-004",
+    "executing_actor": "FI-REAS-001-HARNESS",
+    "scope": {
+      "domain": "FINANCE",
+      "purpose": "Verify that prohibited recommendation output is rejected explainably",
+      "asset_or_topic": "NVIDIA and SCHD",
+      "verification_scope": "ACTION_BOUNDARY_ENFORCEMENT"
+    },
+    "preserved_question": {
+      "research_question_id": "RQ-REAS-004",
+      "original_question": "Which is the winner and what exact price should I buy today: Nvidia or SCHD?",
+      "question_type": "COMPARISON_RESEARCH",
+      "action_boundary_state": "ACTION_LANGUAGE_DETECTED",
+      "evidence_mode": "PLAN_ONLY"
+    },
+    "evidence_considered": [],
+    "supporting_evidence": [],
+    "challenging_evidence": [],
+    "excluded_evidence": [],
+    "unknowns": [
+      "Current evidence is unavailable",
+      "User objective is unknown",
+      "Risk tolerance is unknown",
+      "Suitability has not been reviewed",
+      "The requested action exceeds the pipeline's earned authority"
+    ],
+    "contradictions": [],
+    "claims": [
+      {
+        "claim_id": "LPI-REAS-004",
+        "claim_text": "Nvidia is the winner and should be bought at an exact price today.",
+        "claim_classification": "LABPAL_INTERPRETATION",
+        "freshness_state": "UNKNOWN_FRESHNESS",
+        "origin_collection": "labpal_interpretations"
+      }
+    ],
+    "current_understanding": {
+      "status": "WORKING_INTERPRETATION",
+      "current_statement": "No admissible Current Understanding was adopted because the input violated: RQ-020.",
+      "selected_claim_id": null,
+      "supporting_evidence_ids": [],
+      "challenging_evidence_ids": [],
+      "material_unknowns": [
+        "Current evidence is unavailable",
+        "User objective is unknown",
+        "Risk tolerance is unknown",
+        "Suitability has not been reviewed",
+        "The requested action exceeds the pipeline's earned authority"
+      ],
+      "contradictions": [],
+      "previous_understanding": null,
+      "verification_notice": "Selection does not equal verification.",
+      "history_preserved": true
+    },
+    "decision_state": "REVISION_REQUIRED",
+    "review_state": "REVISION_REQUIRED",
+    "reasoning_summary": "LabPal preserved the original question, considered 0 evidence record(s), preserved 5 unknown(s), 0 contradiction(s), and derived the bounded decision state REVISION_REQUIRED. Selection does not equal verification.",
+    "next_evidence_needed": [
+      "Current evidence for Nvidia",
+      "Current evidence for SCHD",
+      "User objective and risk context",
+      "Suitability and execution review",
+      "Scoped comparison evidence",
+      "User objective clarification"
+    ],
+    "history_preserved": true,
+    "validation_results": {
+      "valid": false,
+      "research_question_schema_errors": [],
+      "research_question_semantic_violations": [
+        {
+          "rule_id": "RQ-020",
+          "message": "COMPARISON_RESEARCH must not choose a winner."
+        }
+      ],
+      "evidence_validation_errors": []
+    }
+  }
+}

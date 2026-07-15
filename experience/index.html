@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+  <meta
+    name="description"
+    content="LabPal Understanding Experience"
+  >
+  <title>LabPal — Understanding Experience</title>
+  <link rel="stylesheet" href="./assets/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <p class="eyebrow">LabPal Understanding Platform</p>
+      <h1>Understanding Experience</h1>
+      <p class="subtitle">
+        Inspect what is known, unknown, challenged and needed next.
+      </p>
+    </div>
+
+    <div class="evidence-label">
+      Deterministic fixture — not live evidence
+    </div>
+  </header>
+
+  <main>
+    <section
+      class="scenario-navigation"
+      aria-labelledby="scenario-heading"
+    >
+      <div>
+        <p class="section-label">Scenario</p>
+        <h2 id="scenario-heading">
+          Select a reasoning journey
+        </h2>
+      </div>
+
+      <label for="scenario-select">
+        Demonstration scenario
+      </label>
+
+      <select id="scenario-select">
+        <option value="valid-research-cycle">
+          Valid research cycle
+        </option>
+        <option value="insufficient-evidence">
+          Insufficient evidence
+        </option>
+        <option value="challenged-understanding">
+          Challenged understanding
+        </option>
+        <option value="prohibited-recommendation">
+          Prohibited recommendation
+        </option>
+      </select>
+    </section>
+
+    <div
+      id="experience-status"
+      class="status-message"
+      role="status"
+      aria-live="polite"
+    >
+      Loading reasoning experience…
+    </div>
+
+    <article
+      id="reasoning-experience"
+      class="reasoning-experience"
+      hidden
+    >
+      <section class="question-panel">
+        <p class="section-label">Research Question</p>
+        <h2 id="question-text"></h2>
+
+        <dl class="metadata-grid">
+          <div>
+            <dt>Question type</dt>
+            <dd id="question-type"></dd>
+          </div>
+          <div>
+            <dt>Evidence mode</dt>
+            <dd id="evidence-mode"></dd>
+          </div>
+          <div>
+            <dt>Action boundary</dt>
+            <dd id="action-boundary"></dd>
+          </div>
+          <div>
+            <dt>Execution</dt>
+            <dd id="execution-id"></dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="understanding-panel">
+        <p class="section-label">Current Understanding</p>
+        <h2 id="understanding-statement"></h2>
+        <p id="verification-notice"></p>
+      </section>
+
+      <section class="state-grid">
+        <div class="state-card">
+          <p class="section-label">Decision</p>
+          <p id="decision-state" class="state-value"></p>
+        </div>
+
+        <div class="state-card">
+          <p class="section-label">Review</p>
+          <p id="review-state" class="state-value"></p>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <div class="content-card">
+          <h2>Evidence considered</h2>
+          <ul id="evidence-list"></ul>
+        </div>
+
+        <div class="content-card">
+          <h2>Unknowns</h2>
+          <ul id="unknown-list"></ul>
+        </div>
+
+        <div class="content-card">
+          <h2>Contradictions</h2>
+          <ul id="contradiction-list"></ul>
+        </div>
+
+        <div class="content-card">
+          <h2>Next evidence needed</h2>
+          <ul id="next-evidence-list"></ul>
+        </div>
+      </section>
+
+      <section class="summary-panel">
+        <p class="section-label">Reasoning Summary</p>
+        <p id="reasoning-summary"></p>
+      </section>
+
+      <details class="raw-output">
+        <summary>Inspect structured output</summary>
+        <pre id="raw-json"></pre>
+      </details>
+    </article>
+  </main>
+
+  <script src="./assets/app.js"></script>
+</body>
+</html>

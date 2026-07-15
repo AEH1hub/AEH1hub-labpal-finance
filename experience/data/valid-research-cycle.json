@@ -1,0 +1,103 @@
+{
+  "experience_metadata": {
+    "scenario_id": "valid-research-cycle",
+    "fixture": "valid-research-cycle.fixture.json",
+    "evidence_label": "DETERMINISTIC_FIXTURE_NOT_LIVE_EVIDENCE",
+    "reasoning_milestone": "FI-REAS-001",
+    "history_preserved": true
+  },
+  "result": {
+    "milestone": "FI-REAS-001",
+    "execution_id": "REAS-EXEC-001",
+    "executing_actor": "FI-REAS-001-HARNESS",
+    "scope": {
+      "domain": "FINANCE",
+      "purpose": "Validate one deterministic research-only reasoning cycle",
+      "asset_or_topic": "IBM",
+      "verification_scope": "STRUCTURE_AND_REASONING_ONLY"
+    },
+    "preserved_question": {
+      "research_question_id": "RQ-REAS-001",
+      "original_question": "What does this preserved IBM evidence demonstrate within the current research scope?",
+      "question_type": "COMPANY_RESEARCH",
+      "action_boundary_state": "RESEARCH_ONLY",
+      "evidence_mode": "MOCK_EVIDENCE"
+    },
+    "evidence_considered": [
+      "MOCK-REAS-EVID-001"
+    ],
+    "supporting_evidence": [
+      "MOCK-REAS-EVID-001"
+    ],
+    "challenging_evidence": [],
+    "excluded_evidence": [],
+    "unknowns": [
+      "Current live IBM market conditions are not established",
+      "No independent provider comparison has been performed",
+      "Current live IBM price remains unknown",
+      "Independent provider agreement remains unknown",
+      "External validity has not been demonstrated by this fixture"
+    ],
+    "contradictions": [],
+    "claims": [
+      {
+        "claim_id": "SF-REAS-001",
+        "claim_text": "The evidence record is explicitly marked as mock evidence.",
+        "claim_classification": "SOURCE_FACT",
+        "freshness_state": "CURRENT",
+        "origin_collection": "source_facts"
+      },
+      {
+        "claim_id": "LPI-REAS-001",
+        "claim_text": "The preserved fixture is sufficient to test pipeline structure, but insufficient to establish current IBM market conditions.",
+        "claim_classification": "LABPAL_INTERPRETATION",
+        "freshness_state": "CURRENT",
+        "origin_collection": "labpal_interpretations"
+      },
+      {
+        "claim_id": "CLAIM-FROM-MOCK-REAS-EVID-001",
+        "claim_text": "The fixture preserves a normalized IBM market-price evidence structure.",
+        "claim_classification": "SOURCE_FACT",
+        "freshness_state": "UNKNOWN_FRESHNESS",
+        "evidence_id": "MOCK-REAS-EVID-001",
+        "origin_collection": "evidence_records"
+      }
+    ],
+    "current_understanding": {
+      "status": "WORKING_INTERPRETATION",
+      "current_statement": "The preserved fixture is sufficient to test pipeline structure, but insufficient to establish current IBM market conditions.",
+      "selected_claim_id": "LPI-REAS-001",
+      "supporting_evidence_ids": [
+        "MOCK-REAS-EVID-001"
+      ],
+      "challenging_evidence_ids": [],
+      "material_unknowns": [
+        "Current live IBM market conditions are not established",
+        "No independent provider comparison has been performed",
+        "Current live IBM price remains unknown",
+        "Independent provider agreement remains unknown",
+        "External validity has not been demonstrated by this fixture"
+      ],
+      "contradictions": [],
+      "previous_understanding": null,
+      "verification_notice": "Selection does not equal verification.",
+      "history_preserved": true
+    },
+    "decision_state": "READY_FOR_REVIEW",
+    "review_state": "READY_FOR_REVIEW",
+    "reasoning_summary": "LabPal preserved the original question, considered 1 evidence record(s), preserved 5 unknown(s), 0 contradiction(s), and derived the bounded decision state READY_FOR_REVIEW. Selection does not equal verification.",
+    "next_evidence_needed": [
+      "A genuine live provider observation is required before making claims about current market reality",
+      "Independent evidence is required before broader verification",
+      "Genuine live provider evidence",
+      "Independent provider evidence"
+    ],
+    "history_preserved": true,
+    "validation_results": {
+      "valid": true,
+      "research_question_schema_errors": [],
+      "research_question_semantic_violations": [],
+      "evidence_validation_errors": []
+    }
+  }
+}
