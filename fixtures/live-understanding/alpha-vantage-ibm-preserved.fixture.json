@@ -1,0 +1,37 @@
+{
+  "milestone": "LU-LIVE-001",
+  "fixture_classification": "PRESERVED_PROVIDER_RESPONSE_NOT_LIVE_REQUEST",
+  "provider": "Alpha Vantage",
+  "requested_symbol": "IBM",
+  "market_session_state": "SESSION_UNKNOWN",
+  "normalized_evidence": {
+    "evidence_id": "AV-GLOBAL-QUOTE-IBM-2026-07-10",
+    "source_name": "Alpha Vantage",
+    "source_url": "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM",
+    "source_type": "MARKET_PRICE",
+    "retrieved_at": "2026-07-12T00:00:00+00:00",
+    "published_at": null,
+    "freshness_state": "RECENT",
+    "asset_or_topic": "IBM",
+    "claim_text": "IBM had a provider-reported price of 287.5600 for the latest trading day 2026-07-10.",
+    "claim_classification": "SOURCE_FACT",
+    "source_quote_or_summary": "symbol=IBM; price=287.5600; latest_trading_day=2026-07-10; volume=3640089; change=-7.7400; change_percent=-2.6211%",
+    "labpal_notes": "Real Alpha Vantage GLOBAL_QUOTE response. No recommendation or suitability conclusion.",
+    "unknowns": [
+      "Provider supplied a trading date but no exact quote timestamp.",
+      "Provider did not supply the exchange timezone.",
+      "Provider did not supply the trading currency.",
+      "Provider payload did not identify whether the quote was real-time or delayed."
+    ],
+    "reliability_notes": "Provider response preserved as received. Exact quote time, exchange timezone, currency, and real-time/delayed status were not supplied in the payload.",
+    "is_mock": false,
+    "mock_label": null
+  },
+  "expected": {
+    "provider_record_valid": true,
+    "canonical_freshness_state": "FRESHNESS_UNKNOWN",
+    "mock_fallback_used": false,
+    "reasoning_decision_state": "READY_FOR_REVIEW",
+    "reasoning_review_state": "READY_FOR_REVIEW"
+  }
+}

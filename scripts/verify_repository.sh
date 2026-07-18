@@ -78,6 +78,10 @@ run_gate \
   "$PYTHON_BIN" -m runtime.understanding_experience_harness
 
 run_gate \
+  "LU-LIVE-001 Live Understanding harness" \
+  "$PYTHON_BIN" -m runtime.live_understanding_pipeline_harness
+
+run_gate \
   "LU-001 Understanding Platform harness" \
   "$PYTHON_BIN" -m runtime.understanding_api_harness
 
