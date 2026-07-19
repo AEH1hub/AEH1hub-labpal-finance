@@ -354,6 +354,70 @@ Regression
 Release
 ```
 
+<!-- DOC-ALIGN-001:START -->
+## Product Contract and Repository Alignment
+
+LabPal is an **Understanding Platform**.
+
+LabPal Finance is its first proving product and is defined as a
+**Portfolio Understanding** product.
+
+It connects to one or more portfolios, preserves evidence, reasons
+transparently, and builds justified understandings for portfolios and
+holdings. It explains:
+
+- what changed;
+- which understanding changed;
+- why it changed;
+- why it matters;
+- what evidence supports it;
+- what remains uncertain; and
+- what deserves attention next.
+
+LabPal supports human judgment. It does not replace it.
+
+The canonical understanding pipeline is:
+
+```text
+Reality
+  ↓
+Evidence
+  ↓
+Evidence Quality
+  ↓
+Reasoning
+  ↓
+Understanding
+  ↓
+Justification
+  ↓
+Decision Support
+  ↓
+Human Judgment
+  ↓
+Outcome
+  ↓
+Learning
+```
+
+The current gateway milestone is
+[`DOC-ALIGN-001`](docs/alignment/DOC-ALIGN-001_Repository_Synchronization.md).
+
+The next product specification is
+[`PU-MVP-001`](docs/product/PU-MVP-001_Portfolio_Understanding_MVP.md).
+
+The initial Portfolio Understanding implementation sequence is:
+
+1. Read-only portfolio connection.
+2. Portfolio Understanding.
+3. Holding Understanding.
+4. Understanding Change Detection.
+5. Understanding History.
+
+> Nothing becomes part of LabPal until the repository knows it exists.
+
+<!-- DOC-ALIGN-001:END -->
+
 ## Roadmap
 
 ### Finance proving domain
