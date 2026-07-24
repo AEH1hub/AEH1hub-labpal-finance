@@ -7,3 +7,38 @@ __pycache__/
 .env
 .env.*
 !.env.example
+
+# SEC-BASE-001 — Restricted local LabPal data
+.private/
+local-data/
+imports/private/
+exports/private/
+reports/private/
+broker-exports/
+portfolio-exports/
+account-statements/
+
+# Broker exports and financial statements
+*broker-export*.csv
+*broker_export*.csv
+*portfolio-export*.csv
+*portfolio_export*.csv
+*account-statement*.csv
+*account_statement*.csv
+*account-statement*.pdf
+*account_statement*.pdf
+
+# Local data stores
+*.sqlite
+*.sqlite3
+*.db
+
+# Credentials, certificates, and private keys
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local logs and generated security output
+*.log
+security-audit-local.*
