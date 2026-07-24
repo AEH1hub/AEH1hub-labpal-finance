@@ -10,6 +10,7 @@ __pycache__/
 
 # SEC-BASE-001 — Restricted local LabPal data
 .private/
+private/
 local-data/
 imports/private/
 exports/private/

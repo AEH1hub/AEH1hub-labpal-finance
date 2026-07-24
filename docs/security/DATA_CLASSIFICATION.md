@@ -1,6 +1,6 @@
 # LabPal Data Classification
 
-**Milestone:** SEC-BASE-001  
+**Milestone:** SEC-BASE-001
 **Status:** Development baseline
 
 ## Purpose
