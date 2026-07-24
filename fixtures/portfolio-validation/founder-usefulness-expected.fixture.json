@@ -1,0 +1,87 @@
+{
+  "milestone": "PU-VALIDATE-001A",
+  "scenario_id": "FOUNDER-SYNTHETIC-CHANGE-001",
+  "before_snapshot_id": "SNAPSHOT-FOUNDER-VALIDATE-001-BEFORE",
+  "after_snapshot_id": "SNAPSHOT-FOUNDER-VALIDATE-001-AFTER",
+  "portfolio_value_change": {
+    "amount": "3.00",
+    "currency": "CHF"
+  },
+  "contributors": [
+    {
+      "holding_id": "HOLDING-MAIN-001",
+      "symbol": "MAIN",
+      "change": {
+        "amount": "7.00",
+        "currency": "CHF"
+      },
+      "direction": "POSITIVE"
+    },
+    {
+      "holding_id": "HOLDING-VUAG-001",
+      "symbol": "VUAG",
+      "change": {
+        "amount": "-4.00",
+        "currency": "CHF"
+      },
+      "direction": "NEGATIVE"
+    }
+  ],
+  "largest_absolute_contributor": "HOLDING-MAIN-001",
+  "supported_facts": [
+    {
+      "fact_id": "FACT-PORTFOLIO-VALUE-CHANGE",
+      "statement": "Portfolio value changed from CHF 230.90 to CHF 233.90, a net change of CHF 3.00.",
+      "evidence_refs": [
+        "SNAPSHOT-FOUNDER-VALIDATE-001-BEFORE.total_value",
+        "SNAPSHOT-FOUNDER-VALIDATE-001-AFTER.total_value"
+      ]
+    },
+    {
+      "fact_id": "FACT-HOLDING-MAIN-001-VALUE-CHANGE",
+      "statement": "MAIN market value changed by CHF 7.00.",
+      "evidence_refs": [
+        "SNAPSHOT-FOUNDER-VALIDATE-001-BEFORE.holdings.HOLDING-MAIN-001.market_value",
+        "SNAPSHOT-FOUNDER-VALIDATE-001-AFTER.holdings.HOLDING-MAIN-001.market_value"
+      ]
+    },
+    {
+      "fact_id": "FACT-HOLDING-VUAG-001-VALUE-CHANGE",
+      "statement": "VUAG market value changed by CHF -4.00.",
+      "evidence_refs": [
+        "SNAPSHOT-FOUNDER-VALIDATE-001-BEFORE.holdings.HOLDING-VUAG-001.market_value",
+        "SNAPSHOT-FOUNDER-VALIDATE-001-AFTER.holdings.HOLDING-VUAG-001.market_value"
+      ]
+    }
+  ],
+  "causal_explanation": {
+    "state": "INSUFFICIENT_EVIDENCE",
+    "claim": null,
+    "unknowns": [
+      "Reason for MAIN market-value change",
+      "Reason for VUAG market-value change",
+      "Income contribution during the period",
+      "Corporate-action contribution during the period"
+    ]
+  },
+  "preserved_source_unknowns": [
+    {
+      "holding_id": "HOLDING-MAIN-001",
+      "field_name": "average_entry_price",
+      "reason": "SOURCE_FIELD_EMPTY"
+    }
+  ],
+  "review_next": [
+    "Obtain period-specific price evidence",
+    "Obtain income and distribution evidence",
+    "Check for corporate actions",
+    "Preserve provider provenance"
+  ],
+  "evidence_limitations": [
+    "Synthetic snapshots do not prove real broker compatibility.",
+    "Market-value changes identify contribution, not cause.",
+    "No period-specific price, income, or corporate-action evidence is attached."
+  ],
+  "recommendations_prohibited": true,
+  "execution_prohibited": true
+}
