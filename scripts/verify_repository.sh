@@ -102,6 +102,10 @@ run_gate \
   "$PYTHON_BIN" -m runtime.portfolio_model_harness
 
 run_gate \
+  "PU-INGEST-001B Deterministic Portfolio Source Parser harness" \
+  "$PYTHON_BIN" -m runtime.portfolio_source_parser_harness
+
+run_gate \
   "PU-VALIDATE-001A Synthetic Founder Usefulness harness" \
   "$PYTHON_BIN" -m runtime.portfolio_usefulness_harness
 
