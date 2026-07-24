@@ -1,0 +1,255 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "portfolio-snapshot.v0.1-pu.schema.json",
+  "title": "LabPal Canonical Portfolio Snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "snapshot_id",
+    "portfolio_id",
+    "base_currency",
+    "observed_at",
+    "source",
+    "holdings",
+    "cash_balances",
+    "total_value",
+    "unknowns"
+  ],
+  "properties": {
+    "snapshot_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "portfolio_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "base_currency": {
+      "type": "string",
+      "pattern": "^[A-Z]{3}$"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source": {
+      "$ref": "#/$defs/portfolioSource"
+    },
+    "holdings": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/holding"
+      }
+    },
+    "cash_balances": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/cashBalance"
+      }
+    },
+    "total_value": {
+      "$ref": "#/$defs/money"
+    },
+    "unknowns": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/unknown"
+      }
+    }
+  },
+  "$defs": {
+    "money": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "amount",
+        "currency"
+      ],
+      "properties": {
+        "amount": {
+          "type": "string",
+          "pattern": "^-?[0-9]+(?:\\.[0-9]+)?$"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        }
+      }
+    },
+    "unknown": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "field_name",
+        "reason",
+        "source_detail"
+      ],
+      "properties": {
+        "field_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reason": {
+          "enum": [
+            "SOURCE_FIELD_MISSING",
+            "SOURCE_FIELD_EMPTY",
+            "SOURCE_VALUE_INVALID",
+            "SOURCE_DOES_NOT_PROVIDE_FIELD"
+          ]
+        },
+        "source_detail": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "sourceProvenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_filename",
+        "source_sha256",
+        "imported_at",
+        "source_row_count"
+      ],
+      "properties": {
+        "source_filename": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "imported_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source_row_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "portfolioSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "provider_name",
+        "source_type",
+        "account_reference",
+        "read_only",
+        "provenance"
+      ],
+      "properties": {
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provider_name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_type": {
+          "enum": [
+            "BROKER_EXPORT",
+            "MANUAL_FIXTURE"
+          ]
+        },
+        "account_reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "read_only": {
+          "const": true
+        },
+        "provenance": {
+          "$ref": "#/$defs/sourceProvenance"
+        }
+      }
+    },
+    "holding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "holding_id",
+        "symbol",
+        "name",
+        "quantity",
+        "market_value",
+        "weight",
+        "observed_at",
+        "average_entry_price",
+        "unknowns"
+      ],
+      "properties": {
+        "holding_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "symbol": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "quantity": {
+          "type": "string",
+          "pattern": "^[0-9]+(?:\\.[0-9]+)?$"
+        },
+        "market_value": {
+          "$ref": "#/$defs/money"
+        },
+        "weight": {
+          "type": "string",
+          "pattern": "^(?:0(?:\\.[0-9]+)?|1(?:\\.0+)?)$"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "average_entry_price": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/money"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unknowns": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/unknown"
+          }
+        }
+      }
+    },
+    "cashBalance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "balance_id",
+        "value",
+        "observed_at"
+      ],
+      "properties": {
+        "balance_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "value": {
+          "$ref": "#/$defs/money"
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

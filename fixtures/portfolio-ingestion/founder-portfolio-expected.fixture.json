@@ -1,0 +1,64 @@
+{
+  "snapshot_id": "SNAPSHOT-FOUNDER-001",
+  "portfolio_id": "PORTFOLIO-FOUNDER-001",
+  "base_currency": "CHF",
+  "observed_at": "2026-07-19T12:00:00+00:00",
+  "source": {
+    "source_id": "SOURCE-FOUNDER-001",
+    "provider_name": "FOUNDER_FIXTURE",
+    "source_type": "MANUAL_FIXTURE",
+    "account_reference": "ACCOUNT-REDACTED-001",
+    "read_only": true,
+    "provenance": {
+      "source_filename": "founder-portfolio-export.fixture.csv",
+      "source_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "imported_at": "2026-07-19T12:05:00+00:00",
+      "source_row_count": 2
+    }
+  },
+  "holdings": [
+    {
+      "holding_id": "HOLDING-MAIN-001",
+      "symbol": "MAIN",
+      "name": "Main Street Capital",
+      "quantity": "2.0000",
+      "market_value": {
+        "amount": "105.40",
+        "currency": "CHF"
+      },
+      "weight": "0.4562770562770562770562770563",
+      "observed_at": "2026-07-19T12:00:00+00:00",
+      "average_entry_price": null,
+      "unknowns": [
+        {
+          "field_name": "average_entry_price",
+          "reason": "SOURCE_FIELD_EMPTY",
+          "source_detail": "The source row did not contain an average entry price."
+        }
+      ]
+    },
+    {
+      "holding_id": "HOLDING-VUAG-001",
+      "symbol": "VUAG",
+      "name": "Vanguard S&P 500 UCITS ETF",
+      "quantity": "1.2500",
+      "market_value": {
+        "amount": "125.50",
+        "currency": "CHF"
+      },
+      "weight": "0.5437229437229437229437229437",
+      "observed_at": "2026-07-19T12:00:00+00:00",
+      "average_entry_price": {
+        "amount": "91.20",
+        "currency": "CHF"
+      },
+      "unknowns": []
+    }
+  ],
+  "cash_balances": [],
+  "total_value": {
+    "amount": "230.90",
+    "currency": "CHF"
+  },
+  "unknowns": []
+}
