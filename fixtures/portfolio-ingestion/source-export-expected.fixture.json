@@ -1,0 +1,132 @@
+{
+  "execution_prohibited": true,
+  "milestone": "PU-INGEST-001B",
+  "recommendations_prohibited": true,
+  "row_provenance": [
+    {
+      "entity_id": "CASH-CHF-001",
+      "source_fields": [
+        "row_type",
+        "portfolio_id",
+        "account_reference",
+        "base_currency",
+        "observed_at",
+        "symbol",
+        "name",
+        "quantity",
+        "market_value",
+        "currency",
+        "average_entry_price"
+      ],
+      "source_row_number": 4
+    },
+    {
+      "entity_id": "HOLDING-MAIN-001",
+      "source_fields": [
+        "row_type",
+        "portfolio_id",
+        "account_reference",
+        "base_currency",
+        "observed_at",
+        "symbol",
+        "name",
+        "quantity",
+        "market_value",
+        "currency",
+        "average_entry_price"
+      ],
+      "source_row_number": 2
+    },
+    {
+      "entity_id": "HOLDING-VUAG-002",
+      "source_fields": [
+        "row_type",
+        "portfolio_id",
+        "account_reference",
+        "base_currency",
+        "observed_at",
+        "symbol",
+        "name",
+        "quantity",
+        "market_value",
+        "currency",
+        "average_entry_price"
+      ],
+      "source_row_number": 3
+    }
+  ],
+  "snapshot": {
+    "base_currency": "CHF",
+    "cash_balances": [
+      {
+        "balance_id": "CASH-CHF-001",
+        "observed_at": "2026-07-24T18:00:00+00:00",
+        "value": {
+          "amount": "12.50",
+          "currency": "CHF"
+        }
+      }
+    ],
+    "holdings": [
+      {
+        "average_entry_price": null,
+        "holding_id": "HOLDING-MAIN-001",
+        "market_value": {
+          "amount": "95.00",
+          "currency": "CHF"
+        },
+        "name": "Main Street Capital",
+        "observed_at": "2026-07-24T18:00:00+00:00",
+        "quantity": "2.0000",
+        "symbol": "MAIN",
+        "unknowns": [
+          {
+            "field_name": "average_entry_price",
+            "reason": "SOURCE_FIELD_EMPTY",
+            "source_detail": "Source row 2, field average_entry_price was empty."
+          }
+        ],
+        "weight": "0.4061564771269773407439076528"
+      },
+      {
+        "average_entry_price": {
+          "amount": "120.00",
+          "currency": "CHF"
+        },
+        "holding_id": "HOLDING-VUAG-002",
+        "market_value": {
+          "amount": "138.90",
+          "currency": "CHF"
+        },
+        "name": "Vanguard S&P 500 UCITS ETF",
+        "observed_at": "2026-07-24T18:00:00+00:00",
+        "quantity": "1.0000",
+        "symbol": "VUAG",
+        "unknowns": [],
+        "weight": "0.5938435228730226592560923472"
+      }
+    ],
+    "observed_at": "2026-07-24T18:00:00+00:00",
+    "portfolio_id": "PORTFOLIO-FOUNDER-NEUTRAL-001",
+    "snapshot_id": "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z",
+    "source": {
+      "account_reference": "ACCOUNT-REDACTED-001",
+      "provenance": {
+        "imported_at": "2026-07-24T18:05:00+00:00",
+        "source_filename": "source-export-redacted.fixture.csv",
+        "source_row_count": 3,
+        "source_sha256": "6113415a01f1e126e71282edf954c527387180ccc8f9ea02cac7961924593467"
+      },
+      "provider_name": "LABPAL_NEUTRAL_CSV",
+      "read_only": true,
+      "source_id": "SOURCE-6113415A01F1E126",
+      "source_type": "MANUAL_FIXTURE"
+    },
+    "total_value": {
+      "amount": "246.40",
+      "currency": "CHF"
+    },
+    "unknowns": []
+  },
+  "source_unchanged": true
+}
