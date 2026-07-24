@@ -33,6 +33,22 @@ import re
 path = Path("docs/security/THREAT_MODEL_PORTFOLIO_INGESTION.md")
 text = path.read_text(encoding="utf-8")
 
+if not text.startswith("# Portfolio Ingestion Threat Model"):
+    raise SystemExit("Threat model has an invalid document opening.")
+
+prohibited_fragments = [
+    "That closes the trust-boundary diagram",
+    "Then paste the missing sections",
+    "supplied earlier",
+    "## 12. Current decision#",
+]
+
+for fragment in prohibited_fragments:
+    if fragment in text:
+        raise SystemExit(
+            f"Threat model contains prohibited conversational text: {fragment}"
+        )
+
 headings = [
     "## 1. Purpose",
     "## 2. Security objectives",
@@ -49,8 +65,10 @@ headings = [
 ]
 
 for index, heading in enumerate(headings):
-    if heading not in text:
-        raise SystemExit(f"Missing threat-model heading: {heading}")
+    if text.count(heading) != 1:
+        raise SystemExit(
+            f"Threat-model heading must occur exactly once: {heading}"
+        )
 
     start = text.index(heading) + len(heading)
     end = (
