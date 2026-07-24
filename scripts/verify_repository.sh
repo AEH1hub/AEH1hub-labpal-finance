@@ -101,6 +101,8 @@ run_gate \
   "PU-INGEST-001A Canonical Portfolio Contract harness" \
   "$PYTHON_BIN" -m runtime.portfolio_model_harness
 
+run_gate "SEC-BASE-001 Security baseline" bash scripts/verify_security_baseline.sh
+
 if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   run_gate \
     "Git whitespace integrity" \
