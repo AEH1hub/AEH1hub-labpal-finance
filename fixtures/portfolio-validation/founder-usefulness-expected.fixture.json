@@ -1,0 +1,49 @@
+{
+  "milestone": "PU-VALIDATE-001A",
+  "scenario_id": "FOUNDER-SYNTHETIC-CHANGE-001",
+  "before_snapshot_id": "SNAPSHOT-FOUNDER-VALIDATE-001-BEFORE",
+  "after_snapshot_id": "SNAPSHOT-FOUNDER-VALIDATE-001-AFTER",
+  "portfolio_value_change": {
+    "amount": "3.00",
+    "currency": "CHF"
+  },
+  "contributors": [
+    {
+      "holding_id": "HOLDING-MAIN-001",
+      "symbol": "MAIN",
+      "change": {
+        "amount": "7.00",
+        "currency": "CHF"
+      },
+      "direction": "POSITIVE"
+    },
+    {
+      "holding_id": "HOLDING-VUAG-001",
+      "symbol": "VUAG",
+      "change": {
+        "amount": "-4.00",
+        "currency": "CHF"
+      },
+      "direction": "NEGATIVE"
+    }
+  ],
+  "largest_absolute_contributor": "HOLDING-MAIN-001",
+  "causal_explanation": {
+    "state": "INSUFFICIENT_EVIDENCE",
+    "claim": null,
+    "unknowns": [
+      "Reason for MAIN market-value change",
+      "Reason for VUAG market-value change",
+      "Income contribution during the period",
+      "Corporate-action contribution during the period"
+    ]
+  },
+  "review_next": [
+    "Obtain period-specific price evidence",
+    "Obtain income and distribution evidence",
+    "Check for corporate actions",
+    "Preserve provider provenance"
+  ],
+  "recommendations_prohibited": true,
+  "execution_prohibited": true
+}
