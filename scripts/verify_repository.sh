@@ -97,6 +97,10 @@ run_gate \
   "FI-ASK-001 Research Question harness" \
   "$PYTHON_BIN" runtime/research_question_harness.py
 
+run_gate \
+  "PU-INGEST-001A Canonical Portfolio Contract harness" \
+  "$PYTHON_BIN" -m runtime.portfolio_model_harness
+
 if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
   run_gate \
     "Git whitespace integrity" \
