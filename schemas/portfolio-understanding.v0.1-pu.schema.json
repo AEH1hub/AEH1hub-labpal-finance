@@ -1,0 +1,320 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://labpal.example/schemas/portfolio-understanding.v0.1-pu.schema.json",
+  "title": "PU-UNDERSTAND-001A Canonical Portfolio Understanding",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "understanding_id",
+    "version",
+    "portfolio_id",
+    "subject",
+    "scope",
+    "observed_at",
+    "review_state",
+    "current_understanding",
+    "supported_facts",
+    "portfolio_composition",
+    "holding_summaries",
+    "cash_summary",
+    "unknowns",
+    "limitations",
+    "evidence_required",
+    "review_next",
+    "source_provenance",
+    "recommendations_prohibited",
+    "execution_prohibited"
+  ],
+  "properties": {
+    "understanding_id": {"type": "string", "minLength": 1},
+    "version": {"const": "0.1-pu"},
+    "portfolio_id": {"type": "string", "minLength": 1},
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "portfolio_id", "snapshot_id"],
+      "properties": {
+        "type": {"const": "PORTFOLIO"},
+        "portfolio_id": {"type": "string", "minLength": 1},
+        "snapshot_id": {"type": "string", "minLength": 1}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "base_currency", "holding_count"],
+      "properties": {
+        "type": {"const": "CURRENT_SINGLE_SNAPSHOT"},
+        "base_currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+        "holding_count": {"type": "integer", "minimum": 1}
+      }
+    },
+    "observed_at": {"type": "string", "format": "date-time"},
+    "review_state": {"const": "READY_FOR_REVIEW"},
+    "current_understanding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "statement",
+        "evidence_refs",
+        "approval_status",
+        "review_state_meaning"
+      ],
+      "properties": {
+        "statement": {"type": "string", "minLength": 1},
+        "evidence_refs": {"$ref": "#/$defs/evidenceRefs"},
+        "approval_status": {"const": "NOT_APPROVED"},
+        "review_state_meaning": {"type": "string", "minLength": 1}
+      }
+    },
+    "supported_facts": {
+      "type": "array",
+      "minItems": 3,
+      "items": {"$ref": "#/$defs/supportedFact"}
+    },
+    "portfolio_composition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total_value",
+        "holdings_value",
+        "cash_value",
+        "holding_count",
+        "evidence_refs"
+      ],
+      "properties": {
+        "total_value": {"$ref": "#/$defs/money"},
+        "holdings_value": {"$ref": "#/$defs/money"},
+        "cash_value": {"$ref": "#/$defs/money"},
+        "holding_count": {"type": "integer", "minimum": 1},
+        "evidence_refs": {"$ref": "#/$defs/evidenceRefs"}
+      }
+    },
+    "holding_summaries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/holdingSummary"}
+    },
+    "cash_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total",
+        "balance_count",
+        "balances",
+        "evidence_refs"
+      ],
+      "properties": {
+        "total": {"$ref": "#/$defs/money"},
+        "balance_count": {"type": "integer", "minimum": 0},
+        "balances": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/cashBalance"}
+        },
+        "evidence_refs": {"$ref": "#/$defs/evidenceRefs"}
+      }
+    },
+    "unknowns": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/unknown"}
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/limitation"}
+    },
+    "evidence_required": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/evidenceRequirement"}
+    },
+    "review_next": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "source_provenance": {"$ref": "#/$defs/source"},
+    "recommendations_prohibited": {"const": true},
+    "execution_prohibited": {"const": true}
+  },
+  "$defs": {
+    "money": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["amount", "currency"],
+      "properties": {
+        "amount": {
+          "type": "string",
+          "pattern": "^-?[0-9]+(?:\\.[0-9]+)?$"
+        },
+        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"}
+      }
+    },
+    "evidenceRefs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "supportedFact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fact_id", "statement", "evidence_refs"],
+      "properties": {
+        "fact_id": {"type": "string", "minLength": 1},
+        "statement": {"type": "string", "minLength": 1},
+        "evidence_refs": {"$ref": "#/$defs/evidenceRefs"}
+      }
+    },
+    "holdingSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "holding_id",
+        "symbol",
+        "name",
+        "quantity",
+        "market_value",
+        "weight",
+        "observed_at",
+        "average_entry_price",
+        "reason_for_value",
+        "evidence_refs"
+      ],
+      "properties": {
+        "holding_id": {"type": "string", "minLength": 1},
+        "symbol": {"type": "string", "minLength": 1},
+        "name": {"type": "string", "minLength": 1},
+        "quantity": {
+          "type": "string",
+          "pattern": "^[0-9]+(?:\\.[0-9]+)?$"
+        },
+        "market_value": {"$ref": "#/$defs/money"},
+        "weight": {
+          "type": "string",
+          "pattern": "^(?:0(?:\\.[0-9]+)?|1(?:\\.0+)?)$"
+        },
+        "observed_at": {"type": "string", "format": "date-time"},
+        "average_entry_price": {
+          "oneOf": [
+            {"$ref": "#/$defs/money"},
+            {"type": "null"}
+          ]
+        },
+        "reason_for_value": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["state", "claim", "evidence_required"],
+          "properties": {
+            "state": {"const": "UNKNOWN"},
+            "claim": {"type": "null"},
+            "evidence_required": {"type": "string", "minLength": 1}
+          }
+        },
+        "evidence_refs": {"$ref": "#/$defs/evidenceRefs"}
+      }
+    },
+    "cashBalance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["balance_id", "value", "observed_at"],
+      "properties": {
+        "balance_id": {"type": "string", "minLength": 1},
+        "value": {"$ref": "#/$defs/money"},
+        "observed_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "unknown": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unknown_id",
+        "subject_ref",
+        "field_name",
+        "reason",
+        "source_detail",
+        "evidence_refs"
+      ],
+      "properties": {
+        "unknown_id": {"type": "string", "minLength": 1},
+        "subject_ref": {"type": "string", "minLength": 1},
+        "field_name": {"type": "string", "minLength": 1},
+        "reason": {"type": "string", "minLength": 1},
+        "source_detail": {"type": "string", "minLength": 1},
+        "evidence_refs": {"$ref": "#/$defs/evidenceRefs"}
+      }
+    },
+    "limitation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["limitation_id", "statement", "evidence_refs"],
+      "properties": {
+        "limitation_id": {"type": "string", "minLength": 1},
+        "statement": {"type": "string", "minLength": 1},
+        "evidence_refs": {"$ref": "#/$defs/evidenceRefs"}
+      }
+    },
+    "evidenceRequirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requirement_id",
+        "subject_ref",
+        "purpose",
+        "required_evidence"
+      ],
+      "properties": {
+        "requirement_id": {"type": "string", "minLength": 1},
+        "subject_ref": {"type": "string", "minLength": 1},
+        "purpose": {"type": "string", "minLength": 1},
+        "required_evidence": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "provider_name",
+        "source_type",
+        "account_reference",
+        "read_only",
+        "provenance"
+      ],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "provider_name": {"type": "string", "minLength": 1},
+        "source_type": {
+          "enum": ["BROKER_EXPORT", "MANUAL_FIXTURE"]
+        },
+        "account_reference": {"type": "string", "minLength": 1},
+        "read_only": {"const": true},
+        "provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "source_filename",
+            "source_sha256",
+            "imported_at",
+            "source_row_count"
+          ],
+          "properties": {
+            "source_filename": {"type": "string", "minLength": 1},
+            "source_sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "imported_at": {"type": "string", "format": "date-time"},
+            "source_row_count": {"type": "integer", "minimum": 0}
+          }
+        }
+      }
+    }
+  }
+}

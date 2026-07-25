@@ -1,0 +1,237 @@
+{
+  "cash_summary": {
+    "balance_count": 1,
+    "balances": [
+      {
+        "balance_id": "CASH-CHF-001",
+        "observed_at": "2026-07-24T18:00:00+00:00",
+        "value": {
+          "amount": "12.50",
+          "currency": "CHF"
+        }
+      }
+    ],
+    "evidence_refs": [
+      "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.cash_balances"
+    ],
+    "total": {
+      "amount": "12.50",
+      "currency": "CHF"
+    }
+  },
+  "current_understanding": {
+    "approval_status": "NOT_APPROVED",
+    "evidence_refs": [
+      "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.holdings",
+      "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.cash_balances",
+      "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.total_value"
+    ],
+    "review_state_meaning": "READY_FOR_REVIEW means this factual single-snapshot understanding is ready for human review. It does not mean the portfolio or any investment decision is approved.",
+    "statement": "The snapshot records 2 holdings and CHF 12.50 cash, with total value CHF 246.40."
+  },
+  "evidence_required": [
+    {
+      "purpose": "Explain why MAIN has its observed market value.",
+      "required_evidence": [
+        "market price evidence",
+        "transaction history",
+        "income and distribution evidence",
+        "corporate-action evidence"
+      ],
+      "requirement_id": "EVIDENCE-HOLDING-MAIN-001-VALUE-CAUSE",
+      "subject_ref": "HOLDING-MAIN-001"
+    },
+    {
+      "purpose": "Explain why VUAG has its observed market value.",
+      "required_evidence": [
+        "market price evidence",
+        "transaction history",
+        "income and distribution evidence",
+        "corporate-action evidence"
+      ],
+      "requirement_id": "EVIDENCE-HOLDING-VUAG-002-VALUE-CAUSE",
+      "subject_ref": "HOLDING-VUAG-002"
+    }
+  ],
+  "execution_prohibited": true,
+  "holding_summaries": [
+    {
+      "average_entry_price": null,
+      "evidence_refs": [
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.holdings.HOLDING-MAIN-001"
+      ],
+      "holding_id": "HOLDING-MAIN-001",
+      "market_value": {
+        "amount": "95.00",
+        "currency": "CHF"
+      },
+      "name": "Main Street Capital",
+      "observed_at": "2026-07-24T18:00:00+00:00",
+      "quantity": "2.0000",
+      "reason_for_value": {
+        "claim": null,
+        "evidence_required": "Market, income, transaction, and corporate-action evidence would be required to explain this value.",
+        "state": "UNKNOWN"
+      },
+      "symbol": "MAIN",
+      "weight": "0.4061564771269773407439076528"
+    },
+    {
+      "average_entry_price": {
+        "amount": "120.00",
+        "currency": "CHF"
+      },
+      "evidence_refs": [
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.holdings.HOLDING-VUAG-002"
+      ],
+      "holding_id": "HOLDING-VUAG-002",
+      "market_value": {
+        "amount": "138.90",
+        "currency": "CHF"
+      },
+      "name": "Vanguard S&P 500 UCITS ETF",
+      "observed_at": "2026-07-24T18:00:00+00:00",
+      "quantity": "1.0000",
+      "reason_for_value": {
+        "claim": null,
+        "evidence_required": "Market, income, transaction, and corporate-action evidence would be required to explain this value.",
+        "state": "UNKNOWN"
+      },
+      "symbol": "VUAG",
+      "weight": "0.5938435228730226592560923472"
+    }
+  ],
+  "limitations": [
+    {
+      "evidence_refs": [
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.source.source_type",
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.source.account_reference",
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.source.provenance.source_filename"
+      ],
+      "limitation_id": "LIMITATION-SYNTHETIC-REDACTED",
+      "statement": "The source is synthetic/redacted and does not prove compatibility with a real broker portfolio."
+    },
+    {
+      "evidence_refs": [
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.observed_at"
+      ],
+      "limitation_id": "LIMITATION-SINGLE-SNAPSHOT",
+      "statement": "A single snapshot describes current composition but does not establish why holding values exist or changed."
+    },
+    {
+      "evidence_refs": [
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.holdings"
+      ],
+      "limitation_id": "LIMITATION-NO-DIVERSIFICATION-JUDGMENT",
+      "statement": "No diversification conclusion is supported by this single canonical snapshot."
+    }
+  ],
+  "observed_at": "2026-07-24T18:00:00+00:00",
+  "portfolio_composition": {
+    "cash_value": {
+      "amount": "12.50",
+      "currency": "CHF"
+    },
+    "evidence_refs": [
+      "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.holdings",
+      "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.cash_balances",
+      "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.total_value"
+    ],
+    "holding_count": 2,
+    "holdings_value": {
+      "amount": "233.90",
+      "currency": "CHF"
+    },
+    "total_value": {
+      "amount": "246.40",
+      "currency": "CHF"
+    }
+  },
+  "portfolio_id": "PORTFOLIO-FOUNDER-NEUTRAL-001",
+  "recommendations_prohibited": true,
+  "review_next": [
+    "Review the supported facts against their evidence references.",
+    "Review preserved unknowns without filling them by inference.",
+    "Obtain additional evidence before explaining holding values.",
+    "Keep portfolio and investment approval outside this review state."
+  ],
+  "review_state": "READY_FOR_REVIEW",
+  "scope": {
+    "base_currency": "CHF",
+    "holding_count": 2,
+    "type": "CURRENT_SINGLE_SNAPSHOT"
+  },
+  "source_provenance": {
+    "account_reference": "ACCOUNT-REDACTED-001",
+    "provenance": {
+      "imported_at": "2026-07-24T18:05:00+00:00",
+      "source_filename": "source-export-redacted.fixture.csv",
+      "source_row_count": 3,
+      "source_sha256": "6113415a01f1e126e71282edf954c527387180ccc8f9ea02cac7961924593467"
+    },
+    "provider_name": "LABPAL_NEUTRAL_CSV",
+    "read_only": true,
+    "source_id": "SOURCE-6113415A01F1E126",
+    "source_type": "MANUAL_FIXTURE"
+  },
+  "subject": {
+    "portfolio_id": "PORTFOLIO-FOUNDER-NEUTRAL-001",
+    "snapshot_id": "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z",
+    "type": "PORTFOLIO"
+  },
+  "supported_facts": [
+    {
+      "evidence_refs": [
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.total_value"
+      ],
+      "fact_id": "FACT-CURRENT-TOTAL-VALUE",
+      "statement": "Current portfolio value is CHF 246.40."
+    },
+    {
+      "evidence_refs": [
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.holdings"
+      ],
+      "fact_id": "FACT-CURRENT-HOLDING-COUNT",
+      "statement": "The current snapshot contains 2 holdings."
+    },
+    {
+      "evidence_refs": [
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.cash_balances"
+      ],
+      "fact_id": "FACT-CURRENT-CASH-VALUE",
+      "statement": "Current cash value is CHF 12.50."
+    },
+    {
+      "evidence_refs": [
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.holdings.HOLDING-MAIN-001.symbol",
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.holdings.HOLDING-MAIN-001.market_value",
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.holdings.HOLDING-MAIN-001.weight"
+      ],
+      "fact_id": "FACT-HOLDING-MAIN-001-CURRENT",
+      "statement": "MAIN has market value CHF 95.00 and preserved weight 0.4061564771269773407439076528."
+    },
+    {
+      "evidence_refs": [
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.holdings.HOLDING-VUAG-002.symbol",
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.holdings.HOLDING-VUAG-002.market_value",
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.holdings.HOLDING-VUAG-002.weight"
+      ],
+      "fact_id": "FACT-HOLDING-VUAG-002-CURRENT",
+      "statement": "VUAG has market value CHF 138.90 and preserved weight 0.5938435228730226592560923472."
+    }
+  ],
+  "understanding_id": "UNDERSTANDING-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z",
+  "unknowns": [
+    {
+      "evidence_refs": [
+        "SNAPSHOT-PORTFOLIO-FOUNDER-NEUTRAL-001-20260724T180000Z.holdings.HOLDING-MAIN-001.unknowns.0"
+      ],
+      "field_name": "average_entry_price",
+      "reason": "SOURCE_FIELD_EMPTY",
+      "source_detail": "Source row 2, field average_entry_price was empty.",
+      "subject_ref": "HOLDING-MAIN-001",
+      "unknown_id": "UNKNOWN-HOLDING-MAIN-001-001"
+    }
+  ],
+  "version": "0.1-pu"
+}

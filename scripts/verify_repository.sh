@@ -109,6 +109,10 @@ run_gate \
   "PU-VALIDATE-001A Synthetic Founder Usefulness harness" \
   "$PYTHON_BIN" -m runtime.portfolio_usefulness_harness
 
+run_gate \
+  "PU-UNDERSTAND-001A Canonical Portfolio Understanding harness" \
+  "$PYTHON_BIN" -m runtime.portfolio_understanding_harness
+
 run_gate "SEC-BASE-001 Security baseline" bash scripts/verify_security_baseline.sh
 
 if git rev-parse --is-inside-work-tree >/dev/null 2>&1; then
